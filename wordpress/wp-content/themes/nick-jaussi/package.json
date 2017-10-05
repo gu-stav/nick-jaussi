@@ -1,0 +1,12 @@
+{
+  "name": "nick-jaussi",
+  "version": "1.0.0-beta1",
+  "description": "WP Theme",
+  "main": "index.js",
+  "keywords": [],
+  "author": "Gustav Pursche <pursche@posteo.de>",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
