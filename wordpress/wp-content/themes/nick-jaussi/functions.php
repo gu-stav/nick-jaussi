@@ -34,8 +34,32 @@ function register_post_types() {
     register_post_type('stories', $stories);
 }
 
+function register_story_fields($meta_boxes) {
+  $meta_boxes[] = array(
+    'id' => 'story_images',
+    'title' => 'Images',
+    'post_types' => array('stories',),
+    'context' => 'normal',
+    'priority' => 'default',
+    'autosave' => false,
+    'fields' => array(
+      array(
+        'id' => 'story_image_select',
+        'type' => 'image_advanced',
+        'name' => 'Image Select',
+        'clone' => true,
+        'sort_clone' => true,
+        'add_button' => 'Add Image',
+      ),
+    ),
+  );
+
+  return $meta_boxes;
+}
+
 /* register custom post types */
 add_action('init', 'register_post_types' );
+add_filter('rwmb_meta_boxes', 'register_story_fields');
 
 add_theme_support('automatic-feed-links');
 add_theme_support('post-thumbnails');
