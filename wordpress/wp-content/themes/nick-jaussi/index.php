@@ -1,25 +1,32 @@
+<?php global $STORY_TYPES; ?>
+
 <?php get_header(); ?>
 
 <?php
-  $stories = new WP_Query(
-    array(
-      'post_type' => 'stories',
-      'post_status' => 'publish',
-      'posts_per_page' => -1,
-    )
-  );
+  $stories = get_all_stories();
 
   if ( $stories->have_posts() ) :
     while ( $stories->have_posts() ) : $stories->the_post();
 ?>
 
-  <div class="story-tile">
-    <h2 class="story-tile__title">
-      <?php echo get_the_title(); ?>
-    </h2>
-  </div>
+      <div class="story-tile">
+        <?php
+          $type = $STORY_TYPES[rwmb_meta('story_type')];
+        ?>
 
-<?php endwhile; ?>
-    <?php endif; ?>
+        <h2 class="story-tile__title">
+          <?php if ($type) : ?>
+            <small class="story-tile__type">
+              <?php echo $type ?>
+              <span class="visually-hidden">:</span>
+            </small>
+          <?php endif; ?>
+
+          <?php echo get_the_title(); ?>
+        </h2>
+      </div>
+
+    <?php endwhile; ?>
+  <?php endif; ?>
 
 <?php get_footer(); ?>

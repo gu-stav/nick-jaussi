@@ -1,5 +1,10 @@
 <?php
 
+$STORY_TYPES = array(
+  'reportage' => 'Reportage',
+  'series' => 'Series',
+);
+
 function remove_default_post_type() {
   remove_menu_page('edit.php');
 }
@@ -35,6 +40,8 @@ function register_post_types() {
 }
 
 function register_story_fields($meta_boxes) {
+  global $STORY_TYPES;
+
   $meta_boxes[] = array(
     'id' => 'story_type',
     'title' => 'Type',
@@ -50,10 +57,7 @@ function register_story_fields($meta_boxes) {
         'name' => 'Story Type',
         'type' => 'select',
         'placeholder' => 'Select a type',
-        'options' => array(
-          'Reportage',
-          'Series',
-        ),
+        'options' => $STORY_TYPES,
       ),
     ),
   );
@@ -86,6 +90,16 @@ function create_navigation() {
   register_nav_menus(
     array(
       'main-navigation' => __( 'Navigation' ),
+    )
+  );
+}
+
+function get_all_stories() {
+  return new WP_Query(
+    array(
+      'post_type' => 'stories',
+      'post_status' => 'publish',
+      'posts_per_page' => -1,
     )
   );
 }
