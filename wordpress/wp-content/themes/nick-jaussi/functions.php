@@ -1,11 +1,5 @@
 <?php
 
-/* nav menus */
-if ( function_exists( 'register_nav_menu' ) ) {
-  register_nav_menu('header_nav', __('Header Navigation Menu'));
-  register_nav_menu('footer_nav', __('Footer Navigation Menu'));
-}
-
 function remove_default_post_type() {
   remove_menu_page('edit.php');
 }
@@ -57,8 +51,17 @@ function register_story_fields($meta_boxes) {
   return $meta_boxes;
 }
 
+function create_navigation() {
+  register_nav_menus(
+    array(
+      'main-navigation' => __( 'Navigation' ),
+    )
+  );
+}
+
 /* register custom post types */
 add_action('init', 'register_post_types' );
+add_action('init', 'create_navigation');
 add_filter('rwmb_meta_boxes', 'register_story_fields');
 
 add_theme_support('automatic-feed-links');

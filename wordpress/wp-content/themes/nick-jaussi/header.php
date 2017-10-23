@@ -12,15 +12,15 @@
     <?php wp_head(); ?>
   </head>
 
-  <body <?php body_class(); ?>>
-    <h1 id="logotop">
-      <a href="<?php bloginfo('url'); ?>">
-        <?php bloginfo('name'); ?>
-        :
-        <?php bloginfo('description'); ?>
-      </a>
-    </h1>
+  <body>
 
-    <ul id="topnav">
-      <?php wp_nav_menu(array('theme_location' => 'header_nav')); ?>
-    </ul>
+    <header class="header">
+      <?php
+        wp_nav_menu(
+          array(
+            'theme_location' => 'header-menu',
+            'container_class' => 'navigation',
+          )
+        );
+      ?>
+    </header>
