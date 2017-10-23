@@ -1,3 +1,4 @@
 wp-config.php
 node_modules/
 wordpress/wp-content/debug.log
+wordpress/wp-content/uploads/*

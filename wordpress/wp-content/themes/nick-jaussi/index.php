@@ -11,6 +11,10 @@
 
       <div class="story-tile">
         <?php
+          echo the_post_thumbnail('story-preview');
+        ?>
+
+        <?php
           $type = $STORY_TYPES[rwmb_meta('story_type')];
         ?>
 
