@@ -89,7 +89,7 @@ function register_story_fields($meta_boxes) {
 function create_navigation() {
   register_nav_menus(
     array(
-      'main-navigation' => __( 'Navigation' ),
+      'main-navigation' => 'Navigation',
     )
   );
 }
