@@ -104,6 +104,10 @@ function get_all_stories() {
   );
 }
 
+function remove_wp_version() {
+  return '';
+}
+
 /* register custom post types */
 add_action('init', 'register_post_types' );
 add_action('init', 'create_navigation');
@@ -113,5 +117,10 @@ add_theme_support('automatic-feed-links');
 add_theme_support('post-thumbnails');
 
 add_action('admin_menu','remove_default_post_type');
+
+remove_action('wp_head', 'print_emoji_detection_script', 7);
+remove_action('wp_print_styles', 'print_emoji_styles');
+
+add_filter('the_generator', 'remove_wp_version');
 
 ?>
