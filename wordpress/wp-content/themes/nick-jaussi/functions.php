@@ -11,11 +11,17 @@ function register_post_types() {
       'show_ui' => true,
       'show_in_menu' => true,
       'query_var' => true,
-      'rewrite' => array('slug' => 'portfolio'),
-      'capability_type'    => 'post',
+      'rewrite' => array(
+        'slug' => 'portfolio'
+      ),
+      'capability_type' => 'post',
       'has_archive' => true,
       'hierarchical' => false,
-      'supports' => array('title', 'editor', 'thumbnail',),
+      'supports' => array(
+        'title',
+        'editor',
+        'thumbnail',
+      ),
       'menu_position' => 2,
       'labels' => array(
         'name' => 'Stories',
@@ -30,9 +36,34 @@ function register_post_types() {
 
 function register_story_fields($meta_boxes) {
   $meta_boxes[] = array(
+    'id' => 'story_type',
+    'title' => 'Type',
+    'post_types' => array(
+      'stories',
+    ),
+    'context' => 'advanced',
+    'priority' => 'default',
+    'autosave' => false,
+    'fields' => array(
+      array(
+        'id' => 'story_type',
+        'name' => 'Story Type',
+        'type' => 'select',
+        'placeholder' => 'Select a type',
+        'options' => array(
+          'Reportage',
+          'Series',
+        ),
+      ),
+    ),
+  );
+
+  $meta_boxes[] = array(
     'id' => 'story_images',
     'title' => 'Images',
-    'post_types' => array('stories',),
+    'post_types' => array(
+      'stories',
+    ),
     'context' => 'normal',
     'priority' => 'default',
     'autosave' => false,
@@ -40,7 +71,7 @@ function register_story_fields($meta_boxes) {
       array(
         'id' => 'story_image_select',
         'type' => 'image_advanced',
-        'name' => 'Image Select',
+        'name' => 'Story Image',
         'clone' => true,
         'sort_clone' => true,
         'add_button' => 'Add Image',
