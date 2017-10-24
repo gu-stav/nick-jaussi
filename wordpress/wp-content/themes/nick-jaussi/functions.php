@@ -127,6 +127,7 @@ function remove_wp_version() {
 }
 
 add_image_size('story-preview', 600, 9999);
+add_image_size('story-image', 1200, 9999);
 
 /* register custom post types */
 add_action('init', 'register_post_types' );

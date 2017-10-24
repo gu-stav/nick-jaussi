@@ -20,19 +20,22 @@
       ?>
 
       <h2 class="story-tile__title">
-        <?php if ($type) : ?>
-          <small class="story-tile__type">
-            <?php echo $type ?>
-            <span class="visually-hidden">:</span>
-          </small>
-        <?php endif; ?>
+        <a href="<?php the_permalink(); ?>">
+          <?php if ($type) : ?>
+            <small class="story-tile__type">
+              <?php echo $type ?>
+              <span class="visually-hidden">:</span>
+            </small>
+          <?php endif; ?>
 
-        <?php echo get_the_title(); ?>
+          <?php echo get_the_title(); ?>
+        </a>
       </h2>
     </div>
 
   <?php
       endwhile;
+      wp_reset_query();
     endif;
   ?>
 </div>
