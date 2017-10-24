@@ -43,6 +43,24 @@ function register_story_fields($meta_boxes) {
   global $STORY_TYPES;
 
   $meta_boxes[] = array(
+    'id' => 'story_subtitle',
+    'title' => 'Subtitle',
+    'post_types' => array(
+      'stories',
+    ),
+    'context' => 'advanced',
+    'priority' => 'default',
+    'autosave' => false,
+    'fields' => array(
+      array(
+        'id' => 'story_subtitle',
+        'type' => 'text',
+        'name' => 'Subtitle',
+      ),
+    ),
+  );
+
+  $meta_boxes[] = array(
     'id' => 'story_type',
     'title' => 'Type',
     'post_types' => array(
