@@ -6,21 +6,28 @@
       <?php bloginfo('name'); ?>
     </title>
 
-    <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
+    <link rel="stylesheet"
+          href="<?php bloginfo('stylesheet_url'); ?>" />
 
-    <link rel="SHORTCUT ICON" href="<?php bloginfo('template_directory'); ?>/favicon.ico"/>
+    <link rel="shortcut icon"
+          href="<?php bloginfo('template_directory'); ?>/favicon.ico" />
+
     <?php wp_head(); ?>
   </head>
 
   <body>
+    <div class="page">
+      <header class="header">
+        <a href="<?php echo home_url(); ?>">
+          Startseite
+        </a>
 
-    <header class="header">
-      <?php
-        wp_nav_menu(
-          array(
-            'theme_location' => 'header-menu',
-            'container_class' => 'navigation',
-          )
-        );
-      ?>
-    </header>
+        <?php
+          wp_nav_menu(
+            array(
+              'theme_location' => 'header-menu',
+              'container_class' => 'navigation',
+            )
+          );
+        ?>
+      </header>
