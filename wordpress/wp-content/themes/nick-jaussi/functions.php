@@ -126,6 +126,10 @@ function remove_wp_version() {
   return '';
 }
 
+function enqueue_style() {
+  wp_enqueue_style('style', get_stylesheet_uri());
+}
+
 add_image_size('story-preview', 600, 9999);
 add_image_size('story-image', 1200, 9999);
 
@@ -137,6 +141,7 @@ add_filter('rwmb_meta_boxes', 'register_story_fields');
 add_theme_support('automatic-feed-links');
 add_theme_support('post-thumbnails');
 
+add_action('wp_enqueue_scripts', 'enqueue_style');
 add_action('admin_menu','remove_default_post_type');
 
 remove_action('wp_head', 'print_emoji_detection_script', 7);
