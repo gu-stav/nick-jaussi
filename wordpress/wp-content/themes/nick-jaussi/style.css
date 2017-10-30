@@ -24,6 +24,7 @@ html {
 .header {
   font-family: "Roboto", sans-serif;
   order: 2;
+  margin-left: 2rem;
   padding-right: 2rem;
   padding-top: 2rem;
   text-align: right;
