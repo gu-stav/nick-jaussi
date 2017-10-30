@@ -16,6 +16,11 @@ html {
   margin: 0;
   padding: 0; }
 
+.background-map {
+  background-color: whitesmoke;
+  min-height: 100vh;
+  width: 100%; }
+
 .header {
   font-family: "Roboto", sans-serif;
   order: 2;
@@ -55,7 +60,7 @@ html {
     fill: #c57f23; }
 
 .main {
-  width: 85%; }
+  width: 100%; }
 
 .stories-grid {
   display: flex;
@@ -223,6 +228,7 @@ html {
     font-family: "Roboto", sans-serif;
     font-weight: 700;
     line-height: 1.2;
+    margin-left: 1rem;
     text-transform: lowercase; }
     .text__title:before {
       color: #c57f23;
