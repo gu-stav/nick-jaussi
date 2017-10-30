@@ -1,0 +1,30 @@
+.page {
+  $focus-size: .35rem;
+
+  color: $text-color;
+  display: flex;
+  min-height: calc(100vh);
+  position: relative;
+
+  &:after,
+  &:before {
+    content: '';
+    height: 1.7rem;
+    position: absolute;
+    width: 1.7rem;
+  }
+
+  &:after {
+    border-bottom: $focus-size solid $brand-color;
+    border-left: $focus-size solid $brand-color;
+    bottom: 0;
+    left: 0;
+  }
+
+  &:before {
+    border-right: $focus-size solid $brand-color;
+    border-top: $focus-size solid $brand-color;
+    right: 0;
+    top: 0;
+  }
+}

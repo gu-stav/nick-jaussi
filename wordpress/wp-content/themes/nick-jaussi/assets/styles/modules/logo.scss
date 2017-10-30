@@ -1,0 +1,16 @@
+.logo {
+  display: block;
+
+  &__image {
+    height: 80px;
+    width: 140px;
+  }
+
+  &__image-name {
+    fill: rgb(0, 0, 0);
+  }
+
+  &__image-tagline {
+    fill: $brand-color;
+  }
+}

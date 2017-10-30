@@ -1,0 +1,94 @@
+.story-detail-slide {
+  margin-left: .8rem;
+  position: relative;
+
+  img {
+    font-size: 0;
+    height: auto;
+    line-height: 0;
+    max-height: calc(100vh - .4rem);
+    max-width: 100%;
+  }
+
+  &--intro img {
+    filter: grayscale(100%);
+  }
+
+  &__type {
+    color: white;
+    display: block;
+    font-size: 1rem;
+    margin-bottom: .5rem;
+  }
+
+  &__sub-title {
+    color: white;
+    display: block;
+    font-size: 1rem;
+    margin-top: .5rem;
+  }
+
+  &__title {
+    color: $brand-color;
+    line-height: 1.2;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-align: center;
+  }
+
+  &__content {
+    background-color: rgba(0, 0, 0, .75);
+    color: white;
+    height: 100%;
+    left: 0;
+    padding: 4rem;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  &__text-content {
+    border-top: 1px solid $brand-color;
+    column-count: 2;
+    column-gap: 2rem;
+    font-family: Arial;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+
+    > *:first-child {
+      margin-top: 0;
+    }
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+
+    > p {
+      margin-bottom: 0;
+    }
+
+    > p + p {
+      margin-top: .45rem;
+    }
+  }
+
+  &__trigger {
+    background: transparent;
+    border: 2px solid $brand-color;
+    border-radius: .4rem;
+    color: currentColor;
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 1.5rem;
+    padding: .5rem 2rem;
+
+    &:hover,
+    &:focus {
+      background-color: $brand-color;
+      cursor: pointer;
+    }
+  }
+}

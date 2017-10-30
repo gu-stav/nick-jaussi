@@ -1,0 +1,40 @@
+.header {
+  order: 2;
+  padding-right: 2rem;
+  padding-top: 2rem;
+  text-align: right;
+  width: 15%;
+
+  a {
+    color: currentColor;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: $brand-color;
+      text-decoration: underline;
+    }
+  }
+
+  .current_page_item > a {
+    color: $brand-color;
+
+    &:before {
+      display: inline-block;
+      color: $brand-color;
+      content: 'x';
+      margin-right: .25rem;
+    }
+  }
+
+  .menu > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    > * {
+      display: block;
+      margin-bottom: .45rem;
+    }
+  }
+}
