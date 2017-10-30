@@ -3,8 +3,13 @@
 
   color: $text-color;
   display: flex;
+  flex-direction: column;
   min-height: calc(100vh);
   position: relative;
+
+  @include mq(tablet) {
+    flex-direction: row;
+  }
 
   &:after,
   &:before {

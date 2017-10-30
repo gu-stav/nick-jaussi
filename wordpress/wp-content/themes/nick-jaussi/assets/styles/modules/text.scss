@@ -1,8 +1,16 @@
 .text {
   margin: 0 auto;
-  max-width: 42rem;
-  padding-bottom: 4rem;
+  max-width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
   padding-top: 2rem;
+
+  @include mq(tablet) {
+    max-width: 42rem;
+    padding-bottom: 4rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
 
   &__title {
     font-family: $font-family-roboto;
@@ -30,9 +38,11 @@
   }
 
   &__author-image {
-    float: right;
-    margin-bottom: 1.5rem;
-    margin-left: 1.5rem;
-    margin-right: -8rem;
+    @include mq(tablet) {
+      float: right;
+      margin-bottom: 1.5rem;
+      margin-left: 1.5rem;
+      margin-right: -8rem;
+    }
   }
 }

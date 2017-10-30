@@ -5,8 +5,13 @@
   flex: 0 0 auto;
   margin-bottom: 1rem;
   margin-left: 1rem;
+  overflow: hidden;
   position: relative;
-  width: calc(50% - 1rem);
+  width: calc(100% - 1rem);
+
+  @include mq(tablet) {
+    width: calc(50% - 1rem);
+  }
 
   & > a {
     color: currentColor;
@@ -50,7 +55,7 @@
   &__title {
     font-family: $font-family-roboto;
     font-weight: $font-weight-normal;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     left: 50%;
     line-height: 1.2;
     margin: 0 .5rem;
@@ -61,6 +66,9 @@
     transform: translate(-50%, -50%);
     transition: opacity 200ms ease;
     top: 50%;
-    white-space: nowrap;
+
+    @include mq(tablet) {
+      font-size: 1.6rem;
+    }
   }
 }

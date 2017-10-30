@@ -1,11 +1,18 @@
 .header {
   font-family: $font-family-roboto;
-  order: 2;
-  margin-left: 2rem;
-  padding-right: 2rem;
-  padding-top: 2rem;
-  text-align: right;
-  width: 15%;
+  order: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+
+  @include mq(tablet) {
+    order: 1;
+    margin-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 2rem;
+    text-align: right;
+    width: 15%;
+  }
 
   a {
     color: currentColor;
