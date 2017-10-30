@@ -5,6 +5,8 @@
   padding-top: 2rem;
 
   &__title {
+    font-family: $font-family-roboto;
+    font-weight: $font-weight-bold;
     line-height: 1.2;
     text-transform: lowercase;
 
@@ -12,13 +14,14 @@
       color: $brand-color;
       content: 'x';
       display: inline-block;
+      font-size: .9rem;
       line-height: 1.2;
-      margin-right: .5rem;
     }
   }
 
   &__content {
-    line-height: 1.5;
+    font-family: $font-family-roboto;
+    line-height: 1.45;
 
     a {
       color: $brand-color;

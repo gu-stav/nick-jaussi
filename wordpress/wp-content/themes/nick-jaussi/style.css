@@ -17,6 +17,7 @@ html {
   padding: 0; }
 
 .header {
+  font-family: "Roboto", sans-serif;
   order: 2;
   padding-right: 2rem;
   padding-top: 2rem;
@@ -41,7 +42,7 @@ html {
     padding: 0; }
     .header .menu > ul > * {
       display: block;
-      margin-bottom: .45rem; }
+      margin-bottom: .75rem; }
 
 .logo {
   display: block; }
@@ -82,14 +83,18 @@ html {
     color: white;
     display: block;
     font-size: 1rem;
+    font-weight: 400;
     margin-bottom: .5rem; }
   .story-detail-slide__sub-title {
     color: white;
     display: block;
+    font-weight: 400;
     font-size: 1rem;
     margin-top: .5rem; }
   .story-detail-slide__title {
     color: #c57f23;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
     line-height: 1.2;
     margin-bottom: 0;
     margin-top: 0;
@@ -107,9 +112,9 @@ html {
     border-top: 1px solid #c57f23;
     column-count: 2;
     column-gap: 2rem;
-    font-family: Arial;
+    font-family: "Roboto", sans-serif;
     font-size: 1.1rem;
-    line-height: 1.4;
+    line-height: 1.45;
     margin-top: 1.5rem;
     padding-top: 1.5rem; }
     .story-detail-slide__text-content > *:first-child {
@@ -167,13 +172,15 @@ html {
     border-bottom: 1px solid #c57f23;
     display: block;
     font-size: .85rem;
-    font-weight: normal;
+    font-weight: 400;
     letter-spacing: .05rem;
     margin-bottom: .3rem;
     padding-bottom: .3rem;
     text-transform: uppercase; }
   .story-tile__title {
-    font-size: 1.8rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
     left: 50%;
     line-height: 1.2;
     margin: 0 .5rem;
@@ -213,16 +220,19 @@ html {
   padding-bottom: 4rem;
   padding-top: 2rem; }
   .text__title {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
     line-height: 1.2;
     text-transform: lowercase; }
     .text__title:before {
       color: #c57f23;
       content: 'x';
       display: inline-block;
-      line-height: 1.2;
-      margin-right: .5rem; }
+      font-size: .9rem;
+      line-height: 1.2; }
   .text__content {
-    line-height: 1.5; }
+    font-family: "Roboto", sans-serif;
+    line-height: 1.45; }
     .text__content a {
       color: #c57f23; }
   .text__author-image {

@@ -1,6 +1,11 @@
 $brand-color: rgb(197, 127, 35);
 $text-color: #333;
 
+$font-path: "../fonts/";
+$font-family-roboto: "Roboto", sans-serif;
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+
 $mq-breakpoints: (
   small:        400px,
   tablet:       760px,
