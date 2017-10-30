@@ -22,6 +22,10 @@
   </head>
 
   <body>
+    <?php
+      wp_admin_bar_render();
+    ?>
+
     <div class="page">
       <header class="header">
         <a href="<?php echo home_url(); ?>"
