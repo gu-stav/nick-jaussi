@@ -5,8 +5,9 @@ $STORY_TYPES = array(
   'series' => 'Series',
 );
 
-function remove_default_post_type() {
+function cleanup_admin() {
   remove_menu_page('edit.php');
+  remove_menu_page('edit-comments.php');
 }
 
 function register_post_types() {
@@ -148,7 +149,7 @@ add_theme_support('automatic-feed-links');
 add_theme_support('post-thumbnails');
 
 add_action('wp_enqueue_scripts', 'enqueue_style');
-add_action('admin_menu','remove_default_post_type');
+add_action('admin_menu','cleanup_admin');
 
 remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');
