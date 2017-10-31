@@ -1,6 +1,8 @@
 .story-detail-slide {
+  display: inline-block;
   margin-left: .8rem;
   position: relative;
+  white-space: normal;
 
   img {
     font-size: 0;
@@ -8,6 +10,7 @@
     line-height: 0;
     max-height: calc(100vh - .4rem);
     max-width: 100%;
+    object-fit: contain;
   }
 
   &--intro img {

@@ -3,4 +3,8 @@
   // TODO add once js has kicked in
   max-height: calc(100vh - 1.6rem);
   overflow: hidden;
+
+  &__slides {
+    white-space: nowrap;
+  }
 }

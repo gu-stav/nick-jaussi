@@ -91,7 +91,7 @@ function register_story_fields($meta_boxes) {
     'autosave' => false,
     'fields' => array(
       array(
-        'id' => 'story_image_select',
+        'id' => 'story_images',
         'type' => 'image_advanced',
         'name' => 'Story Image',
         'clone' => true,
@@ -130,6 +130,11 @@ function enqueue_style() {
   wp_enqueue_style('style', get_stylesheet_uri());
 }
 
+function theme_scripts() {
+  wp_register_script('main', get_template_directory_uri() . '/main.js', false, false, true);
+  wp_enqueue_script('main');
+}
+
 add_image_size('story-preview', 600, 9999);
 add_image_size('story-image', 1200, 9999);
 add_image_size('portrait', 400, 400);
@@ -149,5 +154,6 @@ remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');
 
 add_filter('the_generator', 'remove_wp_version');
+add_action( 'wp_enqueue_scripts', 'theme_scripts');
 
 ?>

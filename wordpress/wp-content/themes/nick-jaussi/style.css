@@ -83,16 +83,21 @@ html {
   margin-top: .8rem;
   max-height: calc(100vh - 1.6rem);
   overflow: hidden; }
+  .story-detail__slides {
+    white-space: nowrap; }
 
 .story-detail-slide {
+  display: inline-block;
   margin-left: .8rem;
-  position: relative; }
+  position: relative;
+  white-space: normal; }
   .story-detail-slide img {
     font-size: 0;
     height: auto;
     line-height: 0;
     max-height: calc(100vh - .4rem);
-    max-width: 100%; }
+    max-width: 100%;
+    object-fit: contain; }
   .story-detail-slide--intro img {
     filter: grayscale(100%); }
   .story-detail-slide__type {
