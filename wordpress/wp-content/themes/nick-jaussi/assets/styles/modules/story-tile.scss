@@ -16,7 +16,7 @@
   & > a {
     color: currentColor;
     cursor: pointer;
-    display: block;
+    display: flex;
     font-size: 0;
     line-height: 0;
     position: relative;
@@ -26,6 +26,7 @@
 
   img {
     height: auto;
+    object-fit: contain;
     transition: all 300ms ease;
     width: 100%;
   }
