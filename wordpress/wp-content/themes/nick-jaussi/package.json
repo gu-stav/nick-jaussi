@@ -17,12 +17,17 @@
     "webpack": "^3.8.1"
   },
   "dependencies": {
+    "autoprefixer": "^7.1.6",
+    "cssnano": "^3.10.0",
     "domready": "^1.0.8",
     "lory.js": "^2.3.3",
+    "postcss-cli": "^4.1.1",
     "sass-mq": "^3.3.2"
   },
   "scripts": {
     "watch": "webpack --progress --colors --watch",
-    "compile": "webpack --progress --colors"
+    "compile": "webpack --progress --colors",
+    "minify-css": "postcss style.css > style.tmp && cat style.tmp > style.css && rm -rf style.tmp",
+    "compile-production": "npm run compile && npm run minify-css"
   }
 }
