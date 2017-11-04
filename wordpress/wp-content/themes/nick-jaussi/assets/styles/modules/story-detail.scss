@@ -1,10 +1,55 @@
 .story-detail {
+  margin-left: .8rem;
   margin-top: .8rem;
-  // TODO add once js has kicked in
-  max-height: calc(100vh - 1.6rem);
-  overflow: hidden;
+  position: relative;
+
+  &__frame {
+    overflow: hidden;
+  }
 
   &__slides {
-    white-space: nowrap;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    .no-js & {
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__slider-controls {
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    position: absolute;
+    left: calc(100% + .4rem);
+    z-index: 100;
+
+    .no-js & {
+      display: none;
+    }
+  }
+
+  &__slider-control {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    opacity: .2;
+    padding: .3rem .5rem;
+    position: relative;
+    user-select: none;
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+    }
+
+    > svg {
+      fill: currentColor;
+      height: 1.5rem;
+      width: 1.5rem;
+    }
   }
 }

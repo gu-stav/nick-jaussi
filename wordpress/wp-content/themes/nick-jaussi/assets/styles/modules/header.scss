@@ -30,9 +30,11 @@
 
     &:before {
       display: inline-block;
+      font-size: .6rem;
       color: $brand-color;
       content: 'x';
-      margin-right: .25rem;
+      margin-right: .4rem;
+      transform: translateY(.1rem);
     }
   }
 
@@ -42,8 +44,12 @@
     padding: 0;
 
     > * {
-      display: block;
-      margin-bottom: .75rem;
+      display: inline-block;
+
+      @include mq(tablet) {
+        display: block;
+        margin-bottom: .75rem;
+      }
     }
   }
 }

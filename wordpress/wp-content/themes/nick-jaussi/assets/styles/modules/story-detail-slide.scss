@@ -1,16 +1,23 @@
 .story-detail-slide {
-  display: inline-block;
-  margin-left: .8rem;
+  cursor: pointer;
+  display: flex;
+  flex: 1 0 auto;
+  height: calc(100vh - 1.6rem);
+  justify-content: center;
   position: relative;
-  white-space: normal;
+  width: 100%;
+
+  .no-js & + & {
+    margin-top: 1.5rem;
+  }
 
   img {
     font-size: 0;
     height: auto;
     line-height: 0;
-    max-height: calc(100vh - .4rem);
-    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
+    width: auto;
   }
 
   &--intro img {
@@ -51,6 +58,7 @@
     padding: 4rem;
     position: absolute;
     top: 0;
+    user-select: none;
     width: 100%;
   }
 
