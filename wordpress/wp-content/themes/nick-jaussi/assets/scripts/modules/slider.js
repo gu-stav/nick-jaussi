@@ -58,9 +58,24 @@ const init = () => {
     }
   };
 
+  const updateSliderArrows = event => {
+    let { currentSlide } = (event && event.detail) || {};
+
+    if (!currentSlide) {
+      currentSlide = 0;
+    }
+
+    const isFirst = currentSlide === 0;
+    const isLast = currentSlide === slides.length;
+
+    slider.classList.toggle('story-detail--no-prev', isFirst);
+    slider.classList.toggle('story-detail--no-next', isLast);
+  };
+
   document.addEventListener('keydown', handleKeys);
 
   slider.addEventListener('before.lory.slide', preloadNextImages);
+  slider.addEventListener('after.lory.slide', updateSliderArrows);
 
   slider.addEventListener('click', event => {
     const { target } = event;
@@ -82,6 +97,8 @@ const init = () => {
       }
     }
   });
+
+  updateSliderArrows();
 };
 
 export { init };

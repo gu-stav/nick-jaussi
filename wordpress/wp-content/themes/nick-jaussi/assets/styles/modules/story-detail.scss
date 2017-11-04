@@ -32,11 +32,21 @@
     }
   }
 
+  &--no-prev &__slider-controls > *:first-child,
+  &--no-next &__slider-controls > *:last-child {
+    &,
+    &:hover,
+    &:focus {
+      cursor: default;
+      opacity: .1;
+    }
+  }
+
   &__slider-control {
     background: transparent;
     border: 0;
     cursor: pointer;
-    opacity: .2;
+    opacity: .3;
     padding: .3rem .5rem;
     position: relative;
     user-select: none;
