@@ -2,7 +2,13 @@ import { lory } from 'lory.js';
 
 const init = () => {
   const slider = document.querySelector('.js-slider');
-  const slides = slider.querySelectorAll('.js-slide');
+  const slides = slider && slider.querySelectorAll('.js-slide');
+
+  // no slider present on the page
+  if (!slider || !slides) {
+    return;
+  }
+
   const sliderInstance = lory(slider, {
     classNameFrame: 'story-detail__frame',
     classNameSlideContainer: 'story-detail__slides',
