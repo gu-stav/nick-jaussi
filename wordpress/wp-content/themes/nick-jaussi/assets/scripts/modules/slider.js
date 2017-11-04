@@ -2,6 +2,7 @@ import { lory } from 'lory.js';
 
 const init = () => {
   const slider = document.querySelector('.js-slider');
+  const slides = slider.querySelectorAll('.js-slide');
   const sliderInstance = lory(slider, {
     classNameFrame: 'story-detail__frame',
     classNameSlideContainer: 'story-detail__slides',
@@ -25,7 +26,33 @@ const init = () => {
     }
   };
 
+  const updateURLParts = (event) => {
+    const { currentSlide } = event.detail;
+    const { slideTitle } = slides[currentSlide].dataset || {};
+
+    if (slideTitle) {
+      window.location.hash = slideTitle;
+    } else {
+      window.location.hash = '';
+    }
+  };
+
+  const updateInitialSlide = () => {
+    const title = window.location.hash.substr(1);
+
+    slides.forEach((slide, index) => {
+      const { slideTitle } = slide.dataset;
+
+      if (slideTitle === title) {
+        sliderInstance.slideTo(index);
+      }
+    });
+  };
+
   document.addEventListener('keydown', handleKeys);
+
+  slider.addEventListener('after.lory.slide', updateURLParts);
+
   slider.addEventListener('click', (event) => {
     const { target } = event;
 
@@ -45,6 +72,8 @@ const init = () => {
       }
     }
   });
+
+  updateInitialSlide();
 };
 
 export { init };

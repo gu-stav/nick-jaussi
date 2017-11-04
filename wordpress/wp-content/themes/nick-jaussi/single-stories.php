@@ -43,7 +43,8 @@
             foreach ($images as $list) :
               foreach($list as $image) :
           ?>
-                <div class="story-detail-slide">
+                <div class="js-slide story-detail-slide"
+                     data-slide-title="<?php echo sanitize_title($image['title']); ?>">
                   <?php echo wp_get_attachment_image($image['ID'], 'story-image'); ?>
                 </div>
           <?php
