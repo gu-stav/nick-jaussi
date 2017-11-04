@@ -39,12 +39,6 @@
             </div>
           </div>
 
-          <div class="story-detail-slide">
-            <?php
-              echo the_post_thumbnail('story-image');
-            ?>
-          </div>
-
           <?php
             foreach ($images as $list) :
               foreach($list as $image) :
