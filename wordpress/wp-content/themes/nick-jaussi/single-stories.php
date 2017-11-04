@@ -45,8 +45,12 @@
                 $description = $image['description'];
           ?>
                 <figure class="js-slide story-detail-slide"
-                     data-slide-title="<?php echo sanitize_title($image['title']); ?>">
-                  <?php echo wp_get_attachment_image($image['ID'], 'story-image'); ?>
+                     data-slide-title="<?php echo sanitize_title($image['title']); ?>"
+                     data-slide-image="<?php echo esc_html(wp_get_attachment_image($image['ID'], 'story-image')); ?>">
+
+                  <noscript>
+                    <?php echo wp_get_attachment_image($image['ID'], 'story-image'); ?>
+                  </noscript>
 
                   <?php if($description) : ?>
                     <figcaption class="story-detail-slide__caption">

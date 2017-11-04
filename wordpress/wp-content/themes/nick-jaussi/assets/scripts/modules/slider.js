@@ -26,32 +26,33 @@ const init = () => {
     }
   };
 
-  const updateURLParts = (event) => {
-    const { currentSlide } = event.detail;
-    const { slideTitle } = slides[currentSlide].dataset || {};
+  const preloadNextImages = (event) => {
+    const { nextSlide } = event.detail;
 
-    if (slideTitle) {
-      window.location.hash = slideTitle;
-    } else {
-      window.location.hash = '';
-    }
-  };
+    const preloadImages = slide => {
+      const { slideImage } = slide.dataset;
 
-  const updateInitialSlide = () => {
-    const title = window.location.hash.substr(1);
-
-    slides.forEach((slide, index) => {
-      const { slideTitle } = slide.dataset;
-
-      if (slideTitle === title) {
-        sliderInstance.slideTo(index);
+      if (!slide.querySelector('img')) {
+        slide.innerHTML = slideImage + slide.innerHTML;
       }
-    });
+    };
+
+    if (nextSlide) {
+      // preload next slides
+      for(let i = 0; i <= 2; ++i) {
+        const slideIndex = Math.min(nextSlide + i - 1, slides.length);
+        const moreSlide = slides[slideIndex];
+
+        if (moreSlide) {
+          preloadImages(moreSlide);
+        }
+      }
+    }
   };
 
   document.addEventListener('keydown', handleKeys);
 
-  slider.addEventListener('after.lory.slide', updateURLParts);
+  slider.addEventListener('before.lory.slide', preloadNextImages);
 
   slider.addEventListener('click', (event) => {
     const { target } = event;
@@ -72,8 +73,6 @@ const init = () => {
       }
     }
   });
-
-  updateInitialSlide();
 };
 
 export { init };
