@@ -29,9 +29,10 @@
   &__type {
     color: white;
     display: block;
-    font-size: 1rem;
+    font-size: .85rem;
     font-weight: $font-weight-normal;
-    margin-bottom: .5rem;
+    letter-spacing: .05rem;
+    text-transform: uppercase;
   }
 
   &__sub-title {
@@ -39,7 +40,7 @@
     display: block;
     font-weight: $font-weight-normal;
     font-size: 1rem;
-    margin-top: .5rem;
+    margin-top: .25rem;
   }
 
   &__title {
@@ -53,9 +54,12 @@
   }
 
   &__content {
-    background-color: rgba(0, 0, 0, .75);
+    background-color: rgba(0, 0, 0, .85);
     color: white;
+    display: flex;
+    flex-direction: column;
     height: 100%;
+    justify-content: center;
     left: 0;
     padding: 4rem;
     position: absolute;
@@ -65,14 +69,11 @@
   }
 
   &__text-content {
-    border-top: 1px solid $brand-color;
-    column-count: 2;
-    column-gap: 2rem;
     font-family: $font-family-roboto;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 1.45;
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-top: 2rem;
 
     > *:first-child {
       margin-top: 0;
@@ -80,14 +81,6 @@
 
     > *:last-child {
       margin-bottom: 0;
-    }
-
-    > p {
-      margin-bottom: 0;
-    }
-
-    > p + p {
-      margin-top: .45rem;
     }
   }
 
