@@ -7,6 +7,7 @@
   "author": "Gustav Pursche <pursche@posteo.de>",
   "license": "MIT",
   "devDependencies": {
+    "autoprefixer": "^7.1.6",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "css-loader": "^0.28.7",
@@ -19,6 +20,7 @@
     "eslint-plugin-react": "^7.4.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "node-sass": "^4.6.0",
+    "postcss-cli": "^4.1.1",
     "prettier": "^1.7.4",
     "sass-loader": "^6.0.6",
     "stylelint": "^8.2.0",
@@ -27,12 +29,10 @@
     "webpack": "^3.8.1"
   },
   "dependencies": {
-    "autoprefixer": "^7.1.6",
     "core-js": "^2.5.1",
     "cssnano": "^3.10.0",
     "domready": "^1.0.8",
     "lory.js": "^2.3.3",
-    "postcss-cli": "^4.1.1",
     "sass-mq": "^3.3.2"
   },
   "scripts": {
