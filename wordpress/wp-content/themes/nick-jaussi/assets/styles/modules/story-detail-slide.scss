@@ -21,7 +21,7 @@
   }
 
   &--intro img {
-    filter: grayscale(100%);
+    filter: grayscale(100%) blur(4px);
     object-fit: cover;
     min-width: 100%;
   }
