@@ -23,8 +23,8 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    position: absolute;
     left: calc(100% + .4rem);
+    position: absolute;
     z-index: 100;
 
     .no-js & {

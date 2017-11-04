@@ -6,8 +6,8 @@
   width: 100%;
 
   @include mq(tablet) {
-    order: 1;
     margin-left: 2rem;
+    order: 1;
     padding-right: 2rem;
     padding-top: 2rem;
     text-align: right;
@@ -29,10 +29,10 @@
     color: $brand-color;
 
     &:before {
-      display: inline-block;
-      font-size: .6rem;
       color: $brand-color;
       content: 'x';
+      display: inline-block;
+      font-size: .6rem;
       margin-right: .4rem;
       transform: translateY(.1rem);
     }

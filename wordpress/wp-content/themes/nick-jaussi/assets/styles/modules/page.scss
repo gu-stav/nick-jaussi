@@ -1,11 +1,11 @@
 .page {
-  $focus-size: .35rem;
 
   color: $text-color;
   display: flex;
   flex-direction: column;
   min-height: calc(100vh);
   position: relative;
+  $focus-size: .35rem;
 
   @include mq(tablet) {
     flex-direction: row;

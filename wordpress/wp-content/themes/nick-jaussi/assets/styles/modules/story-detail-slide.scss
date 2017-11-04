@@ -23,8 +23,8 @@
 
   &--intro img {
     filter: grayscale(100%) blur(4px);
-    object-fit: cover;
     min-width: 100%;
+    object-fit: cover;
   }
 
   &__type {
@@ -39,8 +39,8 @@
   &__sub-title {
     color: white;
     display: block;
-    font-weight: $font-weight-normal;
     font-size: 1rem;
+    font-weight: $font-weight-normal;
     margin-top: .25rem;
   }
 

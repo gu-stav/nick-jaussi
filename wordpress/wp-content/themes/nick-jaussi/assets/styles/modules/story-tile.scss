@@ -55,8 +55,8 @@
 
   &__title {
     font-family: $font-family-roboto;
-    font-weight: $font-weight-normal;
     font-size: 1.2rem;
+    font-weight: $font-weight-normal;
     left: 50%;
     line-height: 1.2;
     margin: 0 .5rem;
@@ -64,9 +64,9 @@
     position: absolute;
     text-shadow: 0 0 4px rgba(0, 0, 0, .8);
     text-transform: lowercase;
+    top: 50%;
     transform: translate(-50%, -50%);
     transition: opacity 200ms ease;
-    top: 50%;
 
     @include mq(tablet) {
       font-size: 1.6rem;
