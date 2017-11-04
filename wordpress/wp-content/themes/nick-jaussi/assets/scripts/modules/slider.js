@@ -13,7 +13,8 @@ const init = () => {
   const handleKeys = (event) => {
     const { keyCode } = event;
 
-    switch(keyCode) {
+    // eslint-disable-next-line default-case
+    switch (keyCode) {
       case 39:
       case 40:
         sliderInstance.next();
@@ -29,17 +30,18 @@ const init = () => {
   const preloadNextImages = (event) => {
     const { nextSlide } = event.detail;
 
-    const preloadImages = slide => {
+    const preloadImages = (slide) => {
       const { slideImage } = slide.dataset;
 
       if (!slide.querySelector('img')) {
+        // eslint-disable-next-line no-param-reassign
         slide.innerHTML = slideImage + slide.innerHTML;
       }
     };
 
     if (nextSlide) {
-      // preload next slides
-      for(let i = 0; i <= 2; ++i) {
+      // eslint-disable-next-line no-plusplus
+      for (let i = 0; i <= 2; ++i) {
         const slideIndex = Math.min(nextSlide + i - 1, slides.length);
         const moreSlide = slides[slideIndex];
 
@@ -63,6 +65,7 @@ const init = () => {
 
       const { direction } = target.dataset;
 
+      // eslint-disable-next-line default-case
       switch (direction) {
         case 'previous':
           sliderInstance.prev();
