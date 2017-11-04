@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "autoprefixer": "^7.1.6",
+    "core-js": "^2.5.1",
     "cssnano": "^3.10.0",
     "domready": "^1.0.8",
     "lory.js": "^2.3.3",
