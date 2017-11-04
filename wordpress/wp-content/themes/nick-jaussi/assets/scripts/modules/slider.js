@@ -7,10 +7,10 @@ const init = () => {
     classNameFrame: 'story-detail__frame',
     classNameSlideContainer: 'story-detail__slides',
     enableMouseEvents: true,
-    rewind: true,
+    rewind: true
   });
 
-  const handleKeys = (event) => {
+  const handleKeys = event => {
     const { keyCode } = event;
 
     // eslint-disable-next-line default-case
@@ -27,10 +27,10 @@ const init = () => {
     }
   };
 
-  const preloadNextImages = (event) => {
+  const preloadNextImages = event => {
     const { nextSlide } = event.detail;
 
-    const preloadImages = (slide) => {
+    const preloadImages = slide => {
       const { slideImage } = slide.dataset;
 
       if (!slide.querySelector('img')) {
@@ -56,7 +56,7 @@ const init = () => {
 
   slider.addEventListener('before.lory.slide', preloadNextImages);
 
-  slider.addEventListener('click', (event) => {
+  slider.addEventListener('click', event => {
     const { target } = event;
 
     // Controls
