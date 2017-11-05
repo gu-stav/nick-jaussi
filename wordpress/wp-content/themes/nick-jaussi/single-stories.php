@@ -39,7 +39,7 @@
             foreach($list as $image) :
               $description = $image['description'];
         ?>
-              <figure class="js-slide story-detail-slide">
+              <figure class="story-detail-slide js-slider-slide">
                 <div class="story-detail-slide__image-wrap">
                   <?php echo wp_get_attachment_image($image['ID'], 'story-image'); ?>
                 </div>
