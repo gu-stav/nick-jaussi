@@ -6,6 +6,7 @@
   padding-top: 2rem;
 
   @include mq(tablet) {
+    max-width: 42rem;
     padding-bottom: 4rem;
     padding-left: 0;
     padding-right: 0;
