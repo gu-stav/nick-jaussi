@@ -1,8 +1,11 @@
 .story-detail {
-  height: calc(100vh - 1.6rem);
   margin-left: .8rem;
   margin-top: .8rem;
-  overflow: hidden;
+
+  @include mq(tablet) {
+    height: calc(100vh - 1.6rem);
+    overflow: hidden;
+  }
 
   &__canvas {
     transition: transform 400ms ease;

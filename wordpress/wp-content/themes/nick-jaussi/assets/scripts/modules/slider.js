@@ -3,15 +3,16 @@ import debounce from 'debounce';
 const ACTIVE_CLASS = 'story-detail-slide--active';
 
 const init = () => {
-  const slider = document.querySelector('.js-slider');
-  const canvas = slider && slider.querySelector('.story-detail__canvas');
-  const slides = slider && [...slider.querySelectorAll('.js-slide')];
+  const slider = document.getElementsByClassName('js-slider')[0];
+  const canvas = slider && slider.getElementsByClassName('js-slider-canvas')[0];
+  const slides = slider && [...slider.getElementsByClassName('js-slider-slide')];
 
-  const findActiveSlide = () => {
-    const slide = slides.find(_ => _.classList.contains(ACTIVE_CLASS));
+  if (!slider || !canvas || !slides) {
+    return;
+  }
 
-    return slide || slides[0];
-  };
+  const findActiveSlide = () =>
+    slides.find(_ => _.classList.contains(ACTIVE_CLASS));
 
   const slideAfter = nextSlide => {
     const index = slides.findIndex(_ => _ === nextSlide);
@@ -53,4 +54,8 @@ const init = () => {
   document.addEventListener('wheel', debounce(onScroll, 35));
 };
 
-export { init };
+const destroy = () => {
+  document.removeEventListener('wheel');
+};
+
+export { init, destroy };

@@ -2,14 +2,14 @@
 
 <main class="main">
   <div class="story-detail js-slider">
-    <div class="story-detail__canvas">
+    <div class="story-detail__canvas js-slider-canvas">
       <?php
         while ( have_posts() ) : the_post();
           $subtitle = rwmb_meta('story_subtitle');
           $type = $STORY_TYPES[rwmb_meta('story_type')];
           $images = rwmb_meta('story_images');
       ?>
-        <div class="js-slide story-detail-slide story-detail-slide--intro">
+        <div class="story-detail-slide story-detail-slide--intro story-detail-slide--active js-slider-slide">
           <div class="story-detail-slide__content">
             <h1 class="story-detail-slide__title">
               <?php if ($type) : ?>

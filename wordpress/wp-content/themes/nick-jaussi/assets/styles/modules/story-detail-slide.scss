@@ -2,13 +2,17 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - .75rem);
   justify-content: center;
   margin: 0;
   overflow: hidden;
-  padding: .75rem;
+  padding: .75rem 0;
   position: relative;
   width: 100%;
+
+  @include mq(tablet) {
+    height: calc(100vh - .75rem);
+    padding: .75rem;
+  }
 
   &--intro {
     height: auto;
@@ -18,52 +22,83 @@
     display: block;
     font-size: .85rem;
     font-weight: $font-weight-normal;
+
+    @include mq(tablet) {
+      font-size: 1rem;
+    }
   }
 
   &__sub-title {
     color: $brand-color;
     display: block;
-    font-size: 1rem;
+    font-size: .8rem;
     font-weight: $font-weight-normal;
     margin-top: .25rem;
+
+    @include mq(tablet) {
+      font-size: 1rem;
+    }
   }
 
   &__title {
     font-family: $font-family-roboto;
+    font-size: 1.6rem;
     font-weight: $font-weight-bold;
     line-height: 1.2;
     margin-bottom: 0;
     margin-top: 0;
     text-align: center;
+
+    @include mq(tablet) {
+      font-size: 2rem;
+    }
   }
 
   &__image-wrap {
-    flex: 0 1 auto;
-    height: 100%;
-    overflow: hidden;
     text-align: center;
 
-    > img {
+    @include mq(tablet) {
+      flex: 0 1 auto;
       height: 100%;
-      object-fit: contain;
-      width: auto;
+    }
+
+    > img {
+      height: auto;
+      width: 100%;
+
+      @include mq(tablet) {
+        height: 100%;
+        object-fit: contain;
+        overflow: hidden;
+        width: auto;
+      }
     }
   }
 
   &__content {
-    margin-bottom: 4rem;
-    padding-top: 6rem;
+    padding-top: 4rem;
+
+    @include mq(tablet) {
+      margin-bottom: 4rem;
+      padding-top: 2rem;
+    }
   }
 
   &__text-content {
     border-top: 1px solid $brand-color;
-    column-count: 2;
     font-family: $font-family-roboto;
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.45;
-    margin: 1.5rem auto;
+    margin: 1rem auto;
     max-width: 54rem;
-    padding-top: 1.5rem;
+    padding-top: 1rem;
+
+    @include mq(tablet) {
+      column-count: 2;
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+    }
 
     > *:first-child {
       margin-top: 0;
@@ -78,7 +113,11 @@
     font-family: $font-family-roboto;
     font-size: .8rem;
     line-height: 1.25;
-    margin-top: 1.5rem;
+    margin-top: .5rem;
     width: 100%;
+
+    @include mq(tablet) {
+      margin-top: 1.5rem;
+    }
   }
 }
