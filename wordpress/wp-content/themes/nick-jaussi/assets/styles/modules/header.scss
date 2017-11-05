@@ -1,13 +1,21 @@
 .header {
+  border-bottom: 2px solid $brand-color;
   font-family: $font-family-roboto;
+  margin-bottom: 1rem;
   order: 0;
+  padding-bottom: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
+  padding-top: .5rem;
+  text-align: center;
   width: 100%;
 
   @include mq(tablet) {
+    border-bottom: 0;
+    margin-bottom: 0;
     margin-left: 2rem;
     order: 1;
+    padding-bottom: 0;
     padding-right: 2rem;
     padding-top: 2rem;
     text-align: right;
@@ -29,12 +37,14 @@
     color: $brand-color;
 
     &:before {
-      color: $brand-color;
-      content: 'x';
-      display: inline-block;
-      font-size: .6rem;
-      margin-right: .4rem;
-      transform: translateY(.1rem);
+      @include mq(tablet) {
+        color: $brand-color;
+        content: 'x';
+        display: inline-block;
+        font-size: .6rem;
+        margin-right: .4rem;
+        transform: translateY(.1rem);
+      }
     }
   }
 
@@ -49,6 +59,14 @@
       @include mq(tablet) {
         display: block;
         margin-bottom: .75rem;
+      }
+    }
+
+    > * + * {
+      margin-left: 1rem;
+
+      @include mq(tablet) {
+        margin-left: 0;
       }
     }
   }

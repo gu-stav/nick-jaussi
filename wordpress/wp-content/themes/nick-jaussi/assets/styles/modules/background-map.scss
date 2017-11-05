@@ -1,5 +1,9 @@
 .background-map {
   background-color: rgb(245, 245, 245);
   min-height: 100vh;
-  width: 80%;
+  width: 100%;
+
+  @include mq(tablet) {
+    width: 80%;
+  }
 }

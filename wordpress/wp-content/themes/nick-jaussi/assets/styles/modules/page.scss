@@ -2,7 +2,7 @@
   color: $text-color;
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh);
+  min-height: 100vh;
   position: relative;
   $focus-size: .35rem;
 
@@ -13,9 +13,14 @@
   &:after,
   &:before {
     content: '';
+    display: none;
     height: 1.7rem;
     position: absolute;
     width: 1.7rem;
+
+    @include mq(tablet) {
+      display: block;
+    }
   }
 
   &:after {

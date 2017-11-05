@@ -3,9 +3,14 @@
   display: block;
 
   &__image {
-    height: 80px;
+    height: 60px;
     pointer-events: none;
-    width: 140px;
+    width: 100px;
+
+    @include mq(tablet) {
+      height: 80px;
+      width: 140px;
+    }
   }
 
   &__image-name {
