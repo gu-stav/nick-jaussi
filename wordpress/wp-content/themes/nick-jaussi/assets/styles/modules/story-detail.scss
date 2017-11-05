@@ -8,6 +8,6 @@
   }
 
   &__canvas {
-    transition: transform 400ms ease;
+    transition: transform 200ms cubic-bezier(.25, .76, .52, .89);
   }
 }
