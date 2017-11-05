@@ -1,66 +1,10 @@
 .story-detail {
+  height: calc(100vh - 1.6rem);
   margin-left: .8rem;
   margin-top: .8rem;
-  position: relative;
+  overflow: hidden;
 
-  &__frame {
-    overflow: hidden;
-  }
-
-  &__slides {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-
-    .no-js & {
-      flex-direction: column;
-      flex-wrap: wrap;
-    }
-  }
-
-  &__slider-controls {
-    bottom: 0;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    left: calc(100% + .4rem);
-    position: absolute;
-    z-index: 100;
-
-    .no-js & {
-      display: none;
-    }
-  }
-
-  &--no-prev &__slider-controls > *:first-child,
-  &--no-next &__slider-controls > *:last-child {
-    &,
-    &:hover,
-    &:focus {
-      cursor: default;
-      opacity: .1;
-    }
-  }
-
-  &__slider-control {
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    opacity: .3;
-    padding: .3rem .5rem;
-    position: relative;
-    user-select: none;
-
-    &:hover,
-    &:focus {
-      opacity: 1;
-    }
-
-    > svg {
-      fill: currentColor;
-      height: 1.5rem;
-      pointer-events: none;
-      width: 1.5rem;
-    }
+  &__canvas {
+    transition: transform 400ms ease;
   }
 }

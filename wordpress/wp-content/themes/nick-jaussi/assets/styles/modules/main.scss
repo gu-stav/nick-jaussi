@@ -1,8 +1,9 @@
 .main {
   padding-right: 1rem;
-  width: 80%;
+  width: 100%;
 
   @include mq(tablet) {
     padding-right: 0;
+    width: 82%;
   }
 }
