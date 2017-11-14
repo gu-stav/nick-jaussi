@@ -44,13 +44,13 @@ function register_story_fields($meta_boxes) {
   global $STORY_TYPES;
 
   $meta_boxes[] = array(
-    'id' => 'story_subtitle',
-    'title' => 'Subtitle',
+    'id' => 'story_properties',
+    'title' => 'Story properties',
     'post_types' => array(
       'stories',
     ),
     'context' => 'advanced',
-    'priority' => 'default',
+    'priority' => 'high',
     'autosave' => false,
     'fields' => array(
       array(
@@ -58,19 +58,7 @@ function register_story_fields($meta_boxes) {
         'type' => 'text',
         'name' => 'Subtitle',
       ),
-    ),
-  );
 
-  $meta_boxes[] = array(
-    'id' => 'story_type',
-    'title' => 'Type',
-    'post_types' => array(
-      'stories',
-    ),
-    'context' => 'advanced',
-    'priority' => 'default',
-    'autosave' => false,
-    'fields' => array(
       array(
         'id' => 'story_type',
         'name' => 'Story Type',
@@ -78,26 +66,21 @@ function register_story_fields($meta_boxes) {
         'placeholder' => 'Select a type',
         'options' => $STORY_TYPES,
       ),
-    ),
-  );
 
-  $meta_boxes[] = array(
-    'id' => 'story_images',
-    'title' => 'Images',
-    'post_types' => array(
-      'stories',
-    ),
-    'context' => 'normal',
-    'priority' => 'default',
-    'autosave' => false,
-    'fields' => array(
+      array(
+        'id' => 'story_on-frontpage',
+        'name' => 'Show on frontpage',
+        'type' => 'checkbox',
+        'std' => 1,
+      ),
+
       array(
         'id' => 'story_images',
         'type' => 'image_advanced',
-        'name' => 'Story Image',
+        'name' => 'Story Images',
         'clone' => true,
         'sort_clone' => true,
-        'add_button' => 'Add Image',
+        'add_button' => 'Add Image(s)',
       ),
     ),
   );
@@ -119,6 +102,12 @@ function get_all_stories() {
       'post_type' => 'stories',
       'post_status' => 'publish',
       'posts_per_page' => -1,
+      'meta_query' => array(
+        array(
+          'key' => 'story_on-frontpage',
+          'value' => '1',
+        )
+      ),
     )
   );
 }
