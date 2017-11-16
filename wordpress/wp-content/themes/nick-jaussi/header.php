@@ -61,7 +61,7 @@
         <?php
           wp_nav_menu(
             array(
-              'theme_location' => 'header-menu',
+              'theme_location' => 'main-navigation',
               'container_class' => 'navigation',
             )
           );
