@@ -1,8 +1,6 @@
 .story-tile {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(240, 240, 240);
   color: black;
-  display: flex;
-  flex: 0 0 auto;
   margin-bottom: 1rem;
   margin-left: 1rem;
   overflow: hidden;
@@ -13,57 +11,81 @@
     width: calc(50% - 1rem);
   }
 
+  @include mq(desktop) {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex: 0 0 auto;
+  }
+
   & > a {
     color: currentColor;
     cursor: pointer;
-    display: flex;
     font-size: 0;
     line-height: 0;
     position: relative;
     text-align: center;
     text-decoration: none;
+
+    @include mq(desktop) {
+      display: flex;
+    }
   }
 
   img {
     height: auto;
     object-fit: cover;
-    transition: all 300ms ease;
     width: 100%;
+
+    @include mq(desktop) {
+      transition: all 300ms ease;
+    }
   }
 
   & > a:hover img,
   & > a:focus img {
-    filter: grayscale(100%);
-    opacity: .15;
+    @include mq(desktop) {
+      filter: grayscale(100%);
+      opacity: .15;
+    }
   }
 
   & > a:hover > &__title,
   & > a:focus > &__title {
-    opacity: 1;
+    @include mq(desktop) {
+      opacity: 1;
+    }
   }
 
   &__type {
-    border-bottom: 1px solid $brand-color;
     display: block;
     font-size: .85rem;
     font-weight: $font-weight-normal;
-    margin-bottom: .3rem;
-    padding-bottom: .3rem;
+    padding-bottom: .1rem;
+
+    @include mq(desktop) {
+      border-bottom: 1px solid $brand-color;
+      margin-bottom: .3rem;
+      padding-bottom: .3rem;
+    }
   }
 
   &__title {
     font-family: $font-family-roboto;
     font-size: 1.2rem;
     font-weight: $font-weight-normal;
-    left: 50%;
     line-height: 1.2;
-    margin: 0 .5rem;
-    opacity: 0;
-    position: absolute;
+    margin: 0 .5rem .5rem .5rem;
     text-transform: lowercase;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    transition: opacity 200ms ease;
+
+    @include mq(desktop) {
+      left: 50%;
+      margin-bottom: 0;
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      transition: opacity 200ms ease;
+    }
 
     @include mq(tablet) {
       font-size: 1.6rem;

@@ -108,11 +108,11 @@
     font-family: $font-family-roboto;
     font-size: .8rem;
     line-height: 1.25;
-    min-height: 2.5rem;
     width: 100%;
 
     @include mq(tablet) {
       max-width: 57rem;
+      min-height: 2.5rem;
     }
 
     &:not(:empty) {

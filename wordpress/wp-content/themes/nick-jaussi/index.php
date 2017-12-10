@@ -7,8 +7,7 @@
     <?php
       $stories = get_all_stories();
 
-      if ( $stories->have_posts() ) :
-        while ( $stories->have_posts() ) : $stories->the_post();
+      while ( $stories->have_posts() ) : $stories->the_post();
     ?>
 
       <div class="story-tile">
@@ -35,9 +34,8 @@
       </div>
 
     <?php
-        endwhile;
-        wp_reset_query();
-      endif;
+      endwhile;
+      wp_reset_query();
     ?>
   </div>
 </div>
