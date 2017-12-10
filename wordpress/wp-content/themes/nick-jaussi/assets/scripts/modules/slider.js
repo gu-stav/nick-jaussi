@@ -46,7 +46,7 @@ const init = () => {
   const onScroll = event => {
     const currentTime = new Date().getTime();
 
-    if (lastScrolled + 1000 > currentTime) {
+    if (lastScrolled + 1100 > currentTime) {
       return false;
     }
 
