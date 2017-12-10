@@ -62,8 +62,32 @@ const init = () => {
     return true;
   };
 
+  const onKeyDown = event => {
+    const { keyCode } = event;
+    const activeSlide = findActiveSlide();
+    let nextSlide;
+
+    switch(keyCode) {
+      case 40:
+      case 39:
+        nextSlide = slideAfter(activeSlide);
+        break;
+
+      case 38:
+      case 37:
+        nextSlide = slideBefore(activeSlide);
+        break;
+    }
+
+    if (nextSlide) {
+      scrollToSlide(nextSlide);
+      lastScrolled = currentTime;
+    }
+  };
+
   document.addEventListener('wheel', onScroll);
   document.addEventListener('mousewheel', onScroll);
+  document.addEventListener('keydown', onKeyDown);
 };
 
 const destroy = () => {
