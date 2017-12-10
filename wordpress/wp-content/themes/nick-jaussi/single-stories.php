@@ -37,18 +37,13 @@
         <?php
           foreach ($images as $list) :
             foreach($list as $image) :
-              $description = $image['description'];
         ?>
               <figure class="story-detail-slide js-slider-slide">
                 <div class="story-detail-slide__image-wrap">
                   <?php echo wp_get_attachment_image($image['ID'], 'story-image'); ?>
                 </div>
 
-                <?php if($description) : ?>
-                  <figcaption class="story-detail-slide__caption">
-                    <?php echo $description; ?>
-                  </figcaption>
-                <?php endif; ?>
+                <figcaption class="story-detail-slide__caption"><?php echo $image['description']; ?></figcaption>
               </figure>
         <?php
             endforeach;

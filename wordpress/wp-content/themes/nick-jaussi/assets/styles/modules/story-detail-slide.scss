@@ -108,12 +108,19 @@
     font-family: $font-family-roboto;
     font-size: .8rem;
     line-height: 1.25;
-    margin-top: .5rem;
+    min-height: 2.5rem;
     width: 100%;
 
     @include mq(tablet) {
-      margin-top: .75rem;
       max-width: 57rem;
+    }
+
+    &:not(:empty) {
+      margin-top: .5rem;
+
+      @include mq(tablet) {
+        margin-top: .75rem;
+      }
     }
   }
 }
