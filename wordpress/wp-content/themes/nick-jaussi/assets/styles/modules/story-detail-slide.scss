@@ -54,9 +54,12 @@
 
   &__image-wrap {
     flex: 1;
+    height: 100%;
     position: relative;
+    width: 100%;
 
-    > img {
+    > img,
+    > video {
       height: auto;
       object-fit: contain;
       width: 100%;
@@ -64,6 +67,7 @@
       @include mq(tablet) {
         height: 100%;
         left: 50%;
+        max-width: 100%;
         position: absolute;
         transform: translateX(-50%);
         width: auto;

@@ -8,6 +8,7 @@
           $subtitle = rwmb_meta('story_subtitle');
           $type = $STORY_TYPES[rwmb_meta('story_type')];
           $images = rwmb_meta('story_images');
+          $videos = rwmb_meta('story_videos');
       ?>
         <div class="story-detail-slide story-detail-slide--intro story-detail-slide--active js-slider-slide">
           <div class="story-detail-slide__content">
@@ -33,6 +34,25 @@
             </div>
           </div>
         </div>
+
+        <?php
+          foreach ($videos as $list) :
+            foreach($list as $video) :
+        ?>
+
+          <figure class="story-detail-slide js-slider-slide">
+            <div class="story-detail-slide__image-wrap">
+              <video controls
+                     src="<?php echo $video['src']; ?>"
+                     poster="<?php echo $video['image']['src']; ?>" />
+            </div>
+
+            <figcaption class="story-detail-slide__caption"><?php echo $video['description']; ?></figcaption>
+          </figure>
+        <?php
+            endforeach;
+          endforeach;
+        ?>
 
         <?php
           foreach ($images as $list) :

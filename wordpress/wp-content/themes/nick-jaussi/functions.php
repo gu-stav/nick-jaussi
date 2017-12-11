@@ -83,6 +83,15 @@ function register_story_fields($meta_boxes) {
         'sort_clone' => true,
         'add_button' => 'Add Image(s)',
       ),
+
+      array(
+        'id' => 'story_videos',
+        'type' => 'video',
+        'name' => 'Story Videos',
+        'clone' => true,
+        'sort_clone' => true,
+        'add_button' => 'Add Video(s)',
+      ),
     ),
   );
 
