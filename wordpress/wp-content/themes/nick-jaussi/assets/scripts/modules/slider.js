@@ -41,8 +41,16 @@ const init = () => {
 
   const scrollToSlide = slide => {
     const { offsetTop } = slide;
+    let value;
 
-    canvas.style.transform = `translateY(${-offsetTop}px)`;
+    if (offsetTop !== 0) {
+      value = `translateY(${-offsetTop}px)`;
+    } else {
+       value = 'none';
+    }
+
+    canvas.style.transform = value;
+
     slides.forEach(_ => _.classList.toggle(ACTIVE_CLASS, _ === slide));
   };
 
