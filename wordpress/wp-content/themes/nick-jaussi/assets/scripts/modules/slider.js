@@ -16,6 +16,9 @@ const init = () => {
   const findActiveSlide = () =>
     slides.find(_ => _.classList.contains(ACTIVE_CLASS));
 
+  const findSlideByTitle = (title) =>
+    slides.find(_ => _.classList.dataset.title === title);
+
   const slideAfter = nextSlide => {
     const index = slides.findIndex(_ => _ === nextSlide);
 

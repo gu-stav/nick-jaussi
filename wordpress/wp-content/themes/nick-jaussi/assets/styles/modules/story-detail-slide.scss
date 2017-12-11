@@ -53,12 +53,8 @@
   }
 
   &__image-wrap {
-    text-align: center;
-
-    @include mq(tablet) {
-      height: 100%;
-      overflow: hidden;
-    }
+    flex: 1;
+    position: relative;
 
     > img {
       height: auto;
@@ -67,6 +63,9 @@
 
       @include mq(tablet) {
         height: 100%;
+        left: 50%;
+        position: absolute;
+        transform: translateX(-50%);
         width: auto;
       }
     }
