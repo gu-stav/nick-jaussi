@@ -3,6 +3,7 @@
 $STORY_TYPES = array(
   'reportage' => 'Reportage',
   'series' => 'Series',
+  'multimedia' => 'Multimedia',
 );
 
 function cleanup_admin() {
