@@ -1,7 +1,7 @@
 <?php
 /**
  * @package Facebook Open Graph, Google+ and Twitter Card Tags
- * @version 2.1.3
+ * @version 2.1.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -862,6 +862,7 @@ class Webdados_FB_Public {
 			//Set HTTP REFERER and USER AGENT just in case. Some servers may have hotlinking protection
 			curl_setopt($curl, CURLOPT_REFERER, ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ) ? 'https://' : 'http://' ).$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
 			curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+			curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true); //Try to fix White Screen Of Death - https://wordpress.org/support/topic/html-truncated/#post-9714288
 			$data = curl_exec($curl);
 			curl_close($curl);
 			return $data;

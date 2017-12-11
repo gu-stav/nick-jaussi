@@ -215,7 +215,7 @@ global $webdados_fb;
 					</tr>
 					<tr>
 						<td colspan="2" class="info">
-							- <b><?php _e( 'This is an advanced option: Don\'t mess with this unless you know what you\'re doing', 'wonderm00ns-simple-facebook-open-graph-tags' ); ?></b>
+							- <strong><?php _e( 'This is an advanced option: Don\'t mess with this unless you know what you\'re doing', 'wonderm00ns-simple-facebook-open-graph-tags' ); ?></strong>
 							<br/>
 							- <?php _e( 'Force getimagesize on local file even if allow_url_fopen=1', 'wonderm00ns-simple-facebook-open-graph-tags' ); ?>
 							<br/>
@@ -233,7 +233,7 @@ global $webdados_fb;
 						<td colspan="2" class="info">
 							- <?php _e('Experimental', 'wonderm00ns-simple-facebook-open-graph-tags'); ?>
 							<br/>
-							- <b><?php _e( 'This is an advanced option: Don\'t mess with this unless you know what you\'re doing', 'wonderm00ns-simple-facebook-open-graph-tags' ); ?></b>
+							- <strong><?php _e( 'This is an advanced option: Don\'t mess with this unless you know what you\'re doing', 'wonderm00ns-simple-facebook-open-graph-tags' ); ?></strong>
 							<br/>
 							- <?php _e( 'You should only activate this option if you\'re getting fatal errors (white screen of death) and only keep it active if this options does solve those errors', 'wonderm00ns-simple-facebook-open-graph-tags' ); ?>
 							<br/>

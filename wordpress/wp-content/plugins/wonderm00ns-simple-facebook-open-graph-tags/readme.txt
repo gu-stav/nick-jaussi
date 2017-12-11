@@ -1,10 +1,10 @@
 === Facebook Open Graph, Google+ and Twitter Card Tags ===
 Contributors: webdados, wonderm00n
-Donate link: http://blog.wonderm00n.com/2011/10/14/wordpress-plugin-simple-facebook-open-graph-tags/
+Donate link: https://blog.wonderm00n.com/2011/10/14/wordpress-plugin-simple-facebook-open-graph-tags/
 Tags: facebook, open graph, open graph protocol, share, social, meta, rss, twitter card, twitter, schema, google+, g+, google, google plus, image, like, seo, search engine optimization, woocommerce, yoast seo, wordpress seo, woocommerce, subheading, php7
 Requires at least: 4.5
-Tested up to: 4.8.2
-Stable tag: 2.1.3
+Tested up to: 4.9
+Stable tag: 2.1.5
 Inserts Facebook Open Graph, Google+/Schema.org, Twitter and SEO Meta Tags into your WordPress Website for more efficient sharing results.
 
 == Description ==
@@ -71,10 +71,10 @@ Our settings page is discreetly kept under "Options", as it should, instead of t
 
 = 3rd Party Integration: =
 
-* **[Yoast SEO](http://wordpress.org/plugins/wordpress-seo/)**: Allows you to use title, url (canonical) and description from the Yoast SEO plugin.
+* **[Yoast SEO](https://wordpress.org/plugins/wordpress-seo/)**: Allows you to use title, url (canonical) and description from the Yoast SEO plugin.
 * **[WooCommerce](https://wordpress.org/plugins/woocommerce/)**: On product pages sets `og:type` to "product" and adds the price including tax to the `product:price` tags. Also allows you to use the Product Category thumbnails as Open Graph Image and have Product Gallery images as additional Open Graph Images
-* **[SubHeading](http://wordpress.org/extend/plugins/subheading/)**: Add the SubHeading to the post/page title.
-* **[Business Directory Plugin](http://wordpress.org/extend/plugins/business-directory-plugin/)**: Allows you to use BDP listing contents as Open Graph Tags.
+* **[SubHeading](https://wordpress.org/extend/plugins/subheading/)**: Add the SubHeading to the post/page title.
+* **[Business Directory Plugin](https://wordpress.org/extend/plugins/business-directory-plugin/)**: Allows you to use BDP listing contents as Open Graph Tags.
 
 
 == Installation ==
@@ -97,14 +97,23 @@ We like to work with everybody, so (if you want to) our plugin can even integrat
 
 1. Are you using a big enough image? The minimum image size is 200x200 pixels but we recommend 1200x630.
 2. Are you sure you only have one `og:image` tag on the source code? Make sure you're not using more than one plugin to set OG tags?
-3. Go to the [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/), insert your URL, click `Debug`. Then click on `Scrape again` to make sure Facebook gets the current version of your HTML code and not a cached version. If the image that shows up on the preview (bottom of the page) is the correct one, then the tags are well set and it "should" be the one that Facebook uses when sharing the post. If it still does not use the correct image when sharing, despite the debugger shows it correctly, there's nothing more we can do about that. That's just Facebook being Facebook.
+3. Go to the [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/), insert your URL, click `Debug`. Then click on `Scrape Again` to make sure Facebook gets the current version of your HTML code and not a cached version. If the image that shows up on the preview (bottom of the page) is the correct one, then the tags are well set and it "should" be the one that Facebook uses when sharing the post. If it still does not use the correct image when sharing, despite the debugger shows it correctly, there's nothing more we can do about that. That's just Facebook being Facebook.
+
+= What is the "Manually update Facebook cache" button on the "Post updated" notice? =
+
+It's a shortcut to the Facebook Sharing Debugger, where you should click on `Scrape Again` to make sure Facebook gets the current version of your post or page.
 
 = When I save/edit my post I get the "Facebook Open Graph Tags cache NOT updated/purged" error. Should I worry? =
 
 Each time you edit a post, if the option "Try to update Facebook Open Graph Tags cache when saving the post" is activated, we'll try to notify Facebook of the changes so it clears up it's cache and read the new Open Graph tags of this specific URL.
 If this is a new post and it's the first time you're saving it, the error is "normal" and you should ignore it (we're looking at a workaround to not show you this error).
-If this is not a new post and it's not the first time you're saving it, and if this happens always, then maybe your server does not support calling remote URLs with PHP and you should disable the "Try to update Facebook Open Graph Tags cache when saving the post" option. In that scenario we recommend you to use the [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) to `Fetch new scrape information` each time you update your post.
+If this is not a new post and it's not the first time you're saving it, and if this happens always, then maybe your server does not support calling remote URLs with PHP and you should disable the "Try to update Facebook Open Graph Tags cache when saving the post" option. In that scenario we recommend you to use the [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) to `Scrape Again` each time you update your post.
 Sometimes the plugin just can't update the Facebook cache itself and you may need to do it manually on the link provided above.
+
+= Can I authenticate the call to Facebook, with my own app, when trying to update the cache, so I get rid of the "An access token is required to request this resource" error? =
+
+Yes, you can. Create a Facebook app and then use the `fb_og_update_cache_url` filter, like in this [code snippet](https://gist.github.com/webdados/32f2669fbe7653520664be410e5a03b2)
+Do NOT ask us support on this. This is an advanced feature for developers only.
 
 = Can this plugin get content from "random plugin"? =
 
@@ -115,7 +124,14 @@ If you are a plugin or theme author you can always use our filters `fb_og_title`
 
 Chouck out this [code snippet](https://gist.github.com/webdados/ef5d5db01f01bee6041c2b2e0950d73a).
 
+= I'me getting a white screen of death / truncated HTML =
+
+Go to the plugin settings and check the `Do not get image size` option.
+This happens on some edge cases we haven't yet been able to identify.
+Update: Probably fixed on 2.1.4.5
+
 = There's a similar plugin on the repository, by Heateor. Is this the same? =
+
 It's similar, yes. They've forked our plugin and gave no credits whatsoever for our original work.
 
 = Do you provide email support? =
@@ -125,6 +141,31 @@ We DO NOT provide email support for this plugin. If you send us an email asking 
 2. Or we can give you a quote on premium email/phone support if you prefer to
 
 == Changelog ==
+
+= 2.1.5 =
+* Stop showing the metabox or trying to update Facebook cache on non-publicly_queryable post types
+
+= 2.1.4.5 =
+* Set `CURLOPT_FOLLOWLOCATION` to `true` when trying to get image size via curl and avoid fatal errors (white screen of death) when the response returns 301 or 302 - Thanks [@neonkowy](https://wordpress.org/support/users/neonkowy/)
+
+= 2.1.4.4 =
+* Added the `fb_og_update_cache_url` filter so that developers can add their Facebook App ID and Secret to the URL when trying to update/clear cache on Facebook - Thanks [@l3lackcat](https://profiles.wordpress.org/amirullahmn)
+
+= 2.1.4.3 =
+* Added a "Share this on Facebook" button to the "Post updated" notice
+* Fixed some URLs and links from http:// to https://
+* Removed the option to load Facebook locales from their website as the URL now returns 404
+
+= 2.1.4.2 =
+* Added a "Manually update Facebook cache" button to the "Post updated" notice
+* Improved the FAQ
+
+= 2.1.4.1 =
+* Better information when showing up the "Facebook Open Graph Tags cache NOT updated/purged" error, as well as a link to update the cache manually
+* Improved the FAQ
+
+= 2.1.4 =
+* Changed the way the admin notices are generated so we do not have to use PHP sessions
 
 = 2.1.3 =
 * Fixed some PHP notices and warnings

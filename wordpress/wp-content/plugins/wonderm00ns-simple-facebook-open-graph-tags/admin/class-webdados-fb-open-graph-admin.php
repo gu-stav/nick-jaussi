@@ -14,6 +14,10 @@ class Webdados_FB_Admin {
 	/* Database options */
 	private $options;
 
+	/* Update FB status */
+	private $update_status;
+	private $update_error;
+
 	/* Construct */
 	public function __construct( $options, $version ) {
 		$this->options = $options;
@@ -65,18 +69,30 @@ class Webdados_FB_Admin {
 		return $usercontacts;
 	}
 
-	/* Meta boxes on posts */
-	public function add_meta_boxes( $usercontacts ) {
-		global $post;
+	/* Get post types */
+	public function get_post_types() {
 		//All public post types
-		$public_types = get_post_types( array('public'=>true) );
+		$public_types = get_post_types( array(
+			'public' => true,
+			'publicly_queryable' => true,
+		) );
+		//Add page because it's not "publicly_queryable"
+		if ( !isset( $public_types['page'] ) ) $public_types['page'] = 'page';
 		//Do not show for some post types
 		$exclude_types = array(
 			'attachment',
 		);
 		$exclude_types = apply_filters( 'fb_og_metabox_exclude_types', $exclude_types );
+		//Return diff
+		return array_diff( $public_types, $exclude_types );
+	}
+
+	/* Meta boxes on posts */
+	public function add_meta_boxes( $usercontacts ) {
+		global $post;
+		$post_types = $this->get_post_types();
 		if ( is_object($post) ) {
-			if ( in_array(get_post_type($post->ID), $public_types) && !in_array(get_post_type($post->ID), $exclude_types) ) {
+			if ( in_array(get_post_type($post->ID), $post_types) ) {
 				add_meta_box(
 					'webdados_fb_open_graph',
 					WEBDADOS_FB_PLUGIN_NAME,
@@ -229,33 +245,93 @@ class Webdados_FB_Admin {
 		if ($save) {
 			//Force Facebook update anyway - Our meta box could be hidden - Not really! We'll just update if we got our metabox
 			if (get_post_status($post_id)=='publish' && intval($this->options['fb_adv_notify_fb'])==1) {
-				$fb_debug_url='http://graph.facebook.com/?id='.urlencode(get_permalink($post_id)).'&scrape=true&method=post';
-				$response=wp_remote_get($fb_debug_url);
+				$status = 0;
+				$error = false;
+				$fb_debug_url = apply_filters( 'fb_og_update_cache_url', 'https://graph.facebook.com/?id='.urlencode(get_permalink($post_id)).'&scrape=true&method=post' );
+				$response = wp_remote_get($fb_debug_url);
 				if ( is_wp_error($response) ) {
-					$_SESSION['wd_fb_og_updated_error']=1;
-					$_SESSION['wd_fb_og_updated_error_message']=__('URL failed:', 'wonderm00ns-simple-facebook-open-graph-tags').' '.$fb_debug_url;
+					$this->update_status = -1;
+					$this->update_error = __('URL failed:', 'wonderm00ns-simple-facebook-open-graph-tags').' '.$fb_debug_url;
+					//$_SESSION['wd_fb_og_updated_error']=1;
+					//$_SESSION['wd_fb_og_updated_error_message']=__('URL failed:', 'wonderm00ns-simple-facebook-open-graph-tags').' '.$fb_debug_url;
 				} else {
 					if ( $response['response']['code']==200 && intval($this->options['fb_adv_supress_fb_notice'])==0 ) {
-						$_SESSION['wd_fb_og_updated']=1;
+						$this->update_status = 1;
+						$this->update_error = false;
+						//$_SESSION['wd_fb_og_updated']=1;
 					} else {
+						$body = json_decode($response['body']);
+						if ( isset($body->error->message) ) {
+							$this->update_status = -2;
+							$this->update_error = __('Facebook returned:', 'wonderm00ns-simple-facebook-open-graph-tags').' '.$body->error->message;
+						} else {
+							$this->update_status = -3;
+							$this->update_error = __('Unknown error', 'wonderm00ns-simple-facebook-open-graph-tags');
+						}
+						/*
 						if ( $response['response']['code']==500 ) {
 							$_SESSION['wd_fb_og_updated_error']=1;
 							$error=json_decode($response['body']);
 							$_SESSION['wd_fb_og_updated_error_message']=__('Facebook returned:', 'wonderm00ns-simple-facebook-open-graph-tags').' '.$error->error->message;
-						}
+						}*/
 					}
 				}
+				add_filter( 'redirect_post_location', array( $this, 'redirect_post_location' ), 10, 2 );
 			}
 		}
 		return $post_id;
 	}
+	public function redirect_post_location( $location, $post_id ) {
+		$location = add_query_arg( 'wd_fb_og_status', $this->update_status , $location );
+		if ( $this->update_error ) $location = add_query_arg( 'wd_fb_og_error', urlencode($this->update_error) , $location );
+		return $location;
+	}
 	public function admin_notices() {
-		if ($screen = get_current_screen()) {
+		if ( isset($_GET['wd_fb_og_status']) ) {
+			if ( $screen = get_current_screen() ) {
+				if ( $screen->parent_base=='edit' && $screen->base=='post' ) {
+					global $post;
+					switch ( $_GET['wd_fb_og_status'] ) {
+						case '1':
+							?>
+							<div class="updated">
+								<p><?php _e('Facebook Open Graph Tags cache updated/purged.', 'wonderm00ns-simple-facebook-open-graph-tags'); ?> <a class="button button-small" style="margin: 0px 1em;" href="https://www.facebook.com/sharer.php?u=<?php echo urlencode(get_permalink($post->ID));?>" target="_blank"><?php _e('Share this on Facebook', 'wonderm00ns-simple-facebook-open-graph-tags'); ?></a></p>
+							</div>
+							<?php
+							break;
+						case '-1':
+						case '-2':
+						case '-3':
+							?>
+							<div class="error">
+								<p><?php
+									echo '<strong>'.__('Error: Facebook Open Graph Tags cache NOT updated/purged.', 'wonderm00ns-simple-facebook-open-graph-tags').'</strong>';
+									if ( isset($_GET['wd_fb_og_error']) ) echo '<br/>'.$_GET['wd_fb_og_error'];
+								?></p>
+								<p>
+									<strong>
+										<?php _e( 'This is NOT a plugin error.', 'wonderm00ns-simple-facebook-open-graph-tags' ); ?>
+									</strong>
+									<br/>
+									<?php _e( 'Do not open support tickets about this issue.', 'wonderm00ns-simple-facebook-open-graph-tags' ); ?>
+									<?php _e( 'Lately and unfortunately, Facebook is not allowing to update the cache programmatically.', 'wonderm00ns-simple-facebook-open-graph-tags' ); ?>
+									<br/>
+									<a href="https://developers.facebook.com/tools/debug/sharing/?q=<?php echo urlencode(get_permalink($post->ID)); ?>" target="_blank"><?php _e( 'Click here to try to clear the cache manually and then click "Scrape Again"', 'wonderm00ns-simple-facebook-open-graph-tags' ); ?></a>
+								</p>
+							</div>
+							<?php
+							break;
+
+					}
+				}
+			}
+		}
+		/*if ($screen = get_current_screen()) {
 			if (isset($_SESSION['wd_fb_og_updated']) && $_SESSION['wd_fb_og_updated']==1 && $screen->parent_base=='edit' && $screen->base=='post') {
 				global $post;
 				?>
 				<div class="updated">
-					<p><?php _e('Facebook Open Graph Tags cache updated/purged.', 'wonderm00ns-simple-facebook-open-graph-tags'); ?> <a href="http://www.facebook.com/sharer.php?u=<?php echo urlencode(get_permalink($post->ID));?>" target="_blank"><?php _e('Share this on Facebook', 'wonderm00ns-simple-facebook-open-graph-tags'); ?></a></p>
+					<p><?php _e('Facebook Open Graph Tags cache updated/purged.', 'wonderm00ns-simple-facebook-open-graph-tags'); ?> <a href="https://www.facebook.com/sharer.php?u=<?php echo urlencode(get_permalink($post->ID));?>" target="_blank"><?php _e('Share this on Facebook', 'wonderm00ns-simple-facebook-open-graph-tags'); ?></a></p>
 				</div>
 				<?php
 			} else {
@@ -263,7 +339,7 @@ class Webdados_FB_Admin {
 					?>
 					<div class="error">
 						<p><?php
-							echo '<b>'.__('Error: Facebook Open Graph Tags cache NOT updated/purged.', 'wonderm00ns-simple-facebook-open-graph-tags').'</b>';
+							echo '<strong>'.__('Error: Facebook Open Graph Tags cache NOT updated/purged.', 'wonderm00ns-simple-facebook-open-graph-tags').'</strong>';
 							echo '<br/>'.$_SESSION['wd_fb_og_updated_error_message'];
 						?></p>
 					</div>
@@ -273,7 +349,36 @@ class Webdados_FB_Admin {
 		}
 		unset($_SESSION['wd_fb_og_updated']);
 		unset($_SESSION['wd_fb_og_updated_error']);
-		unset($_SESSION['wd_fb_og_updated_error_message']);
+		unset($_SESSION['wd_fb_og_updated_error_message']);*/
+	}
+
+	/* Manually update cache link */
+	public function post_updated_messages( $messages ) {
+		global $post;
+
+		$post_types = $this->get_post_types();
+
+		if ( is_object($post) && is_array($messages) ) {
+			if ( in_array(get_post_type($post->ID), $post_types) ) {
+				if (
+					( !isset($_GET['wd_fb_og_status']) )
+					||
+					( isset($_GET['wd_fb_og_status']) && intval($_GET['wd_fb_og_status'])!=1 )
+				) {
+					foreach ( $messages as $type => $messages1 ) {
+						$buttons = ' <a class="button button-small" style="margin: 0px 1em;" href="'.esc_url( 'https://developers.facebook.com/tools/debug/sharing/?q='.urlencode(get_permalink($post->ID)) ).'" target="_blank">'.__( 'Manually update Facebook cache', 'wonderm00ns-simple-facebook-open-graph-tags' ).'</a>
+									 <a class="button button-small" style="margin: 0px 1em;" href="'.esc_url( 'https://www.facebook.com/sharer.php?u='.urlencode(get_permalink($post->ID)) ).'" target="_blank">'.__( 'Share this on Facebook', 'wonderm00ns-simple-facebook-open-graph-tags' ).'</a>';
+						if ( isset($messages1[1]) ) { //Post updated
+							$messages[$type][1].=$buttons;
+						}
+						if ( isset($messages1[6]) ) { //Post published
+							$messages[$type][6].=$buttons;
+						}
+					}
+				}
+			}
+		}
+		return $messages;
 	}
 
 	/* Options page */

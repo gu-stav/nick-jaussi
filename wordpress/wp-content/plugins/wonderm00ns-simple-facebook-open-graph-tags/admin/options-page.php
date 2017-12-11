@@ -103,7 +103,7 @@ wp_enqueue_media();
 	
 
 	<div class="clear">
-		<p><br/>&copy 2011<?php if(date( 'Y' )>2011) echo '-'.date( 'Y' ); ?> <a href="http://www.webdados.pt/<?php echo esc_attr($out_link_utm); ?>" target="_blank">Webdados</a> &amp; <a href="http://wonderm00n.com/<?php echo esc_attr($out_link_utm); ?>" target="_blank">Marco Almeida (Wonderm00n)</a></p>
+		<p><br/>&copy 2011<?php if(date( 'Y' )>2011) echo '-'.date( 'Y' ); ?> <a href="https://www.webdados.pt/<?php echo esc_attr($out_link_utm); ?>" target="_blank">Webdados</a> &amp; <a href="https://wonderm00n.com/<?php echo esc_attr($out_link_utm); ?>" target="_blank">Marco Almeida (Wonderm00n)</a></p>
 	</div>
 
 

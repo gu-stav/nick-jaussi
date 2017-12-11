@@ -228,10 +228,13 @@ class Webdados_FB {
 		// Add metabox to posts
 		add_action( 'add_meta_boxes', array( $plugin_admin, 'add_meta_boxes' ) );
 		add_action( 'save_post', array( $plugin_admin, 'save_meta_boxes' ) );
+		// Admin notices
 		add_action( 'admin_notices', array( $plugin_admin, 'admin_notices' ) );
+		// Admin link to manually update cache
+		add_action( 'post_updated_messages', array( $plugin_admin, 'post_updated_messages' ) );
 		// Session start so we can know if the cache was cleared on Facebook
-		if(!session_id())
-			@session_start(); //We use @ because some other plugin could previously sent something to the browser
+		//if(!session_id())
+			//@session_start(); //We use @ because some other plugin could previously sent something to the browser
 	}
 
 	/* Public hooks */
@@ -349,6 +352,7 @@ class Webdados_FB {
 			'mr' => 'mr_IN',
 			'nl_NL_formal' => 'nl_NL',
 			'ps' => 'ps_AF',
+			'pt_PT_ao90' => 'pt_PT',
 			'sah' => 'ky_KG',
 			'sq' => 'sq_AL',
 			'te' => 'te_IN',

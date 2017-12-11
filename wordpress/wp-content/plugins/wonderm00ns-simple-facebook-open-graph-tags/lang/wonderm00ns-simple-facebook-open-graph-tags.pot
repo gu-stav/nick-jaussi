@@ -4,14 +4,14 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Facebook Open Graph, Google+ and Twitter Card Tags "
 "2.0.3\n"
-"POT-Creation-Date: 2017-09-26 11:14+0100\n"
+"POT-Creation-Date: 2017-11-21 10:47+0000\n"
 "PO-Revision-Date: 2016-09-26 14:52+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.0.4\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: wonderm00n-open-graph.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -21,81 +21,108 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: admin/class-webdados-fb-open-graph-admin.php:48
+#: admin/class-webdados-fb-open-graph-admin.php:52
 msgid "Settings"
 msgstr ""
 
-#: admin/class-webdados-fb-open-graph-admin.php:59
+#: admin/class-webdados-fb-open-graph-admin.php:63
 msgid "Google+"
 msgstr ""
 
-#: admin/class-webdados-fb-open-graph-admin.php:61
+#: admin/class-webdados-fb-open-graph-admin.php:65
 #: admin/options-page-twitter.php:110
 msgid "Twitter username (without @)"
 msgstr ""
 
-#: admin/class-webdados-fb-open-graph-admin.php:63
+#: admin/class-webdados-fb-open-graph-admin.php:67
 msgid "Facebook profile URL"
 msgstr ""
 
-#: admin/class-webdados-fb-open-graph-admin.php:99
-#: admin/class-webdados-fb-open-graph-admin.php:124
-#: admin/class-webdados-fb-open-graph-admin.php:291
+#: admin/class-webdados-fb-open-graph-admin.php:103
+#: admin/class-webdados-fb-open-graph-admin.php:128
+#: admin/class-webdados-fb-open-graph-admin.php:375
 msgid "Use this image"
 msgstr ""
 
-#: admin/class-webdados-fb-open-graph-admin.php:104
+#: admin/class-webdados-fb-open-graph-admin.php:108
 #: admin/options-page-general.php:121 admin/options-page-general.php:187
 msgid "Upload/Choose"
 msgstr ""
 
-#: admin/class-webdados-fb-open-graph-admin.php:105
+#: admin/class-webdados-fb-open-graph-admin.php:109
 msgid "Clear field"
 msgstr ""
 
-#: admin/class-webdados-fb-open-graph-admin.php:107
+#: admin/class-webdados-fb-open-graph-admin.php:111
 #: admin/options-page-general.php:128
 #, php-format
 msgid "Recommended size: %dx%dpx"
 msgstr ""
 
-#: admin/class-webdados-fb-open-graph-admin.php:123
-#: admin/class-webdados-fb-open-graph-admin.php:290
+#: admin/class-webdados-fb-open-graph-admin.php:127
+#: admin/class-webdados-fb-open-graph-admin.php:374
 msgid "Select image"
 msgstr ""
 
-#: admin/class-webdados-fb-open-graph-admin.php:155
+#: admin/class-webdados-fb-open-graph-admin.php:159
 msgid "Use this description"
 msgstr ""
 
-#: admin/class-webdados-fb-open-graph-admin.php:161
+#: admin/class-webdados-fb-open-graph-admin.php:165
 msgid "The Yoast SEO integration is active, so it's description will be used"
 msgstr ""
 
-#: admin/class-webdados-fb-open-graph-admin.php:167
+#: admin/class-webdados-fb-open-graph-admin.php:171
 msgid ""
 "If this field is not filled, the description will be generated from the "
 "excerpt, if it exists, or from the content"
 msgstr ""
 
-#: admin/class-webdados-fb-open-graph-admin.php:236
+#: admin/class-webdados-fb-open-graph-admin.php:242
 msgid "URL failed:"
 msgstr ""
 
-#: admin/class-webdados-fb-open-graph-admin.php:244
+#: admin/class-webdados-fb-open-graph-admin.php:254
 msgid "Facebook returned:"
 msgstr ""
 
-#: admin/class-webdados-fb-open-graph-admin.php:258
+#: admin/class-webdados-fb-open-graph-admin.php:257
+msgid "Unknown error"
+msgstr ""
+
+#: admin/class-webdados-fb-open-graph-admin.php:286
 msgid "Facebook Open Graph Tags cache updated/purged."
 msgstr ""
 
-#: admin/class-webdados-fb-open-graph-admin.php:258
+#: admin/class-webdados-fb-open-graph-admin.php:286
 msgid "Share this on Facebook"
 msgstr ""
 
-#: admin/class-webdados-fb-open-graph-admin.php:266
+#: admin/class-webdados-fb-open-graph-admin.php:296
 msgid "Error: Facebook Open Graph Tags cache NOT updated/purged."
+msgstr ""
+
+#: admin/class-webdados-fb-open-graph-admin.php:301
+msgid "This is NOT a plugin error."
+msgstr ""
+
+#: admin/class-webdados-fb-open-graph-admin.php:304
+msgid "Do not open support tickets about this issue."
+msgstr ""
+
+#: admin/class-webdados-fb-open-graph-admin.php:305
+msgid ""
+"Lately and unfortunately, Facebook is not allowing to update the cache "
+"programmatically."
+msgstr ""
+
+#: admin/class-webdados-fb-open-graph-admin.php:307
+msgid ""
+"Click here to try to clear the cache manually and then click \"Scrape Again\""
+msgstr ""
+
+#: admin/class-webdados-fb-open-graph-admin.php:355
+msgid "Manually update Facebook cache"
 msgstr ""
 
 #: admin/options-page-3rdparty.php:13

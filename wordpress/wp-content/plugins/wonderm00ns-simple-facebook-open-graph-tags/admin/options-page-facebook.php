@@ -225,7 +225,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 							//Online
 							if (!empty($_GET['localeOnline'])) {
 								if (intval($_GET['localeOnline'])==1) {
-									if ($ch = curl_init('http://www.facebook.com/translations/FacebookLocales.xml')) {
+									if ($ch = curl_init('https://www.facebook.com/translations/FacebookLocales.xml')) {
 										curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 										$fb_locales=curl_exec($ch);
 										if (curl_errno($ch)) {
@@ -282,7 +282,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 								_e('List loaded from Facebook (online)', 'wonderm00ns-simple-facebook-open-graph-tags');
 							} else {
 								if ($loadedOffline) {
-									_e('List loaded from local cache (offline)', 'wonderm00ns-simple-facebook-open-graph-tags'); ?> - <a href="?page=class-webdados-fb-open-graph-admin.php&amp;localeOnline=1" onClick="return(confirm('<?php _e('You\\\'l lose any changes you haven\\\'t saved. Are you sure?', 'wonderm00ns-simple-facebook-open-graph-tags'); ?>'));"><?php _e('Reload from Facebook', 'wonderm00ns-simple-facebook-open-graph-tags'); ?></a><?php
+									_e('List loaded from local cache (offline)', 'wonderm00ns-simple-facebook-open-graph-tags'); ?>
+									<!-- - <a href="?page=class-webdados-fb-open-graph-admin.php&amp;localeOnline=1" onClick="return(confirm('<?php _e('You\\\'l lose any changes you haven\\\'t saved. Are you sure?', 'wonderm00ns-simple-facebook-open-graph-tags'); ?>'));"><?php _e('Reload from Facebook', 'wonderm00ns-simple-facebook-open-graph-tags'); ?></a>-->
+									<?php
 								} else {
 									_e('List not loaded', 'wonderm00ns-simple-facebook-open-graph-tags');
 								}
