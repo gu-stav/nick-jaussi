@@ -1,7 +1,7 @@
 {
     "plugin": {
         "version": "2.10.1",
-        "date": "Thu, 14 Dec 2017 20:04:00 +0000"
+        "date": "Thu, 14 Dec 2017 20:16:51 +0000"
     },
     "groups": [
         {
@@ -15,7 +15,7 @@
         {
             "id": 2,
             "name": "Modified Posts",
-            "redirects": 0,
+            "redirects": 1,
             "module_id": 1,
             "moduleName": "WordPress",
             "enabled": true
@@ -139,6 +139,23 @@
             "group_id": 1,
             "position": 6,
             "last_access": "December 14, 2017",
+            "enabled": true
+        },
+        {
+            "id": 8,
+            "url": "\/portfolio\/?p=348",
+            "action_code": 301,
+            "action_type": "url",
+            "action_data": {
+                "url": "\/portfolio\/portraits\/"
+            },
+            "match_type": "url",
+            "title": "",
+            "hits": 0,
+            "regex": false,
+            "group_id": 2,
+            "position": 0,
+            "last_access": "-",
             "enabled": true
         }
     ]
