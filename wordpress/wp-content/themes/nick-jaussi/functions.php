@@ -132,7 +132,7 @@ function theme_scripts() {
   wp_enqueue_script('main');
 }
 
-add_image_size('story-preview', 600, 9999);
+add_image_size('story-preview', 720, 9999);
 add_image_size('story-image', 1200, 9999);
 add_image_size('portrait', 400, 400);
 
