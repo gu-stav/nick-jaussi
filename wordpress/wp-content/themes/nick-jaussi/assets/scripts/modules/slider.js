@@ -6,6 +6,7 @@ const init = () => {
   const slides = slider && [
     ...slider.getElementsByClassName('js-slider-slide')
   ];
+  const locationHash = window.location.hash;
 
   let lastScrolled = 0;
 
@@ -23,8 +24,8 @@ const init = () => {
     return active;
   };
 
-  const findSlideByTitle = (title) =>
-    slides.find(_ => _.classList.dataset.title === title);
+  const findSlideById = (id) =>
+    slides.find(_ => _.dataset && _.dataset.id === id);
 
   const slideAfter = nextSlide => {
     const index = slides.findIndex(_ => _ === nextSlide);
@@ -46,8 +47,9 @@ const init = () => {
     return null;
   };
 
-  const scrollToSlide = slide => {
+  const scrollToSlide = (slide, options = {}) => {
     const { offsetTop } = slide;
+    let origTransition;
     let value;
 
     if (offsetTop !== 0) {
@@ -56,9 +58,26 @@ const init = () => {
        value = 'none';
     }
 
+    if (options.animate === false) {
+      origTransition = canvas.style.transition;
+      canvas.style.transition = 'none';
+    }
+
     canvas.style.transform = value;
 
+    if (options.animate === false) {
+      setTimeout(() => {
+        canvas.style.transition = origTransition;
+      }, 50);
+    }
+
     slides.forEach(_ => _.classList.toggle(ACTIVE_CLASS, _ === slide));
+
+    if (slide.dataset && slide.dataset.id) {
+      window.location.hash = slide.dataset.id;
+    } else {
+      window.location.hash = '';
+    }
   };
 
   const onScroll = event => {
@@ -106,6 +125,11 @@ const init = () => {
   document.addEventListener('wheel', onScroll);
   document.addEventListener('mousewheel', onScroll);
   document.addEventListener('keydown', onKeyDown);
+
+  if (locationHash) {
+    const start = findSlideById(locationHash.substr(1));
+    scrollToSlide(start, { animate: false });
+  }
 };
 
 const destroy = () => {

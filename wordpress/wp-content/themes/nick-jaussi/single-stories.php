@@ -11,6 +11,7 @@
           $type = $STORY_TYPES[rwmb_meta('story_type')];
           $images = rwmb_meta('story_images');
           $videos = rwmb_meta('story_videos');
+          $mediacount = 1;
 
           if ($intro) :
       ?>
@@ -47,7 +48,8 @@
             foreach($list as $video) :
         ?>
 
-          <figure class="story-detail-slide js-slider-slide">
+          <figure class="story-detail-slide js-slider-slide"
+                  data-id="<?php echo $mediacount; ?>">
             <div class="story-detail-slide__image-wrap">
               <video controls
                      src="<?php echo $video['src']; ?>"
@@ -57,6 +59,7 @@
             <figcaption class="story-detail-slide__caption"><?php echo $video['description']; ?></figcaption>
           </figure>
         <?php
+              $mediacount++;
             endforeach;
           endforeach;
         ?>
@@ -65,7 +68,8 @@
           foreach ($images as $list) :
             foreach($list as $image) :
         ?>
-              <figure class="story-detail-slide js-slider-slide">
+              <figure class="story-detail-slide js-slider-slide"
+                      data-id="<?php echo $mediacount; ?>">
                 <div class="story-detail-slide__image-wrap">
                   <?php echo wp_get_attachment_image($image['ID'], 'story-image'); ?>
                 </div>
@@ -73,6 +77,7 @@
                 <figcaption class="story-detail-slide__caption"><?php echo $image['description']; ?></figcaption>
               </figure>
         <?php
+              $mediacount++;
             endforeach;
           endforeach;
         ?>
