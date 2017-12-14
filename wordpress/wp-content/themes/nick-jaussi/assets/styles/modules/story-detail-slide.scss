@@ -59,7 +59,7 @@
     width: 100%;
 
     > img,
-    > video {
+    > iframe {
       height: auto;
       object-fit: contain;
       width: 100%;
@@ -72,6 +72,10 @@
         transform: translateX(-50%);
         width: auto;
       }
+    }
+
+    > iframe {
+      width: 100%;
     }
   }
 

@@ -10,7 +10,7 @@
           $intro = get_the_content();
           $type = $STORY_TYPES[rwmb_meta('story_type')];
           $images = rwmb_meta('story_images');
-          $videos = rwmb_meta('story_videos');
+          $videoVimeo = rwmb_meta('story_video_vimeo');
           $mediacount = 1;
 
           if ($intro) :
@@ -43,26 +43,19 @@
 
       <?php endif; ?>
 
-        <?php
-          foreach ($videos as $list) :
-            foreach($list as $video) :
-        ?>
+      <?php if ($videoVimeo) : ?>
 
-          <figure class="story-detail-slide js-slider-slide"
-                  data-id="<?php echo $mediacount; ?>">
-            <div class="story-detail-slide__image-wrap">
-              <video controls
-                     src="<?php echo $video['src']; ?>"
-                     poster="<?php echo $video['image']['src']; ?>" />
-            </div>
+        <figure class="story-detail-slide js-slider-slide"
+                data-id="<?php echo $mediacount; ?>">
+          <div class="story-detail-slide__image-wrap">
+            <?php echo wp_oembed_get($videoVimeo); ?>
+          </div>
+        </figure>
 
-            <figcaption class="story-detail-slide__caption"><?php echo $video['description']; ?></figcaption>
-          </figure>
-        <?php
-              $mediacount++;
-            endforeach;
-          endforeach;
-        ?>
+      <?php
+        $mediacount++;
+      endif;
+      ?>
 
         <?php
           foreach ($images as $list) :

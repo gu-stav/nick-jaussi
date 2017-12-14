@@ -85,12 +85,10 @@ function register_story_fields($meta_boxes) {
       ),
 
       array(
-        'id' => 'story_videos',
-        'type' => 'video',
-        'name' => 'Story Videos',
-        'clone' => true,
-        'sort_clone' => true,
-        'add_button' => 'Add Video(s)',
+        'id' => 'story_video_vimeo',
+        'type' => 'text',
+        'name' => 'Story Video (Vimeo)',
+        'add_button' => 'Add Video',
       ),
     ),
   );
