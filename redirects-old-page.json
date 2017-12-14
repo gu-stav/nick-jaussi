@@ -1,0 +1,145 @@
+{
+    "plugin": {
+        "version": "2.10.1",
+        "date": "Thu, 14 Dec 2017 20:04:00 +0000"
+    },
+    "groups": [
+        {
+            "id": 1,
+            "name": "Redirections",
+            "redirects": 7,
+            "module_id": 1,
+            "moduleName": "WordPress",
+            "enabled": true
+        },
+        {
+            "id": 2,
+            "name": "Modified Posts",
+            "redirects": 0,
+            "module_id": 1,
+            "moduleName": "WordPress",
+            "enabled": true
+        }
+    ],
+    "redirects": [
+        {
+            "id": 1,
+            "url": "\/portfolio\/?p=472",
+            "action_code": 301,
+            "action_type": "url",
+            "action_data": {
+                "url": "\/portfolio\/las-maricas-del-santa-fe\/"
+            },
+            "match_type": "url",
+            "title": "",
+            "hits": 1,
+            "regex": false,
+            "group_id": 1,
+            "position": 0,
+            "last_access": "December 14, 2017",
+            "enabled": true
+        },
+        {
+            "id": 2,
+            "url": "\/portfolio\/?p=679",
+            "action_code": 301,
+            "action_type": "url",
+            "action_data": {
+                "url": "\/portfolio\/the-smell-of-san-benito\/"
+            },
+            "match_type": "url",
+            "title": "",
+            "hits": 0,
+            "regex": false,
+            "group_id": 1,
+            "position": 1,
+            "last_access": "-",
+            "enabled": true
+        },
+        {
+            "id": 3,
+            "url": "\/portfolio\/?p=435",
+            "action_code": 301,
+            "action_type": "url",
+            "action_data": {
+                "url": "\/portfolio\/a-house-in-paradise\/"
+            },
+            "match_type": "url",
+            "title": "",
+            "hits": 0,
+            "regex": false,
+            "group_id": 1,
+            "position": 2,
+            "last_access": "-",
+            "enabled": true
+        },
+        {
+            "id": 4,
+            "url": "\/portfolio\/?p=368",
+            "action_code": 301,
+            "action_type": "url",
+            "action_data": {
+                "url": "\/portfolio\/builder-on-behalf-of-the-lord\/"
+            },
+            "match_type": "url",
+            "title": "",
+            "hits": 0,
+            "regex": false,
+            "group_id": 1,
+            "position": 3,
+            "last_access": "-",
+            "enabled": true
+        },
+        {
+            "id": 5,
+            "url": "\/portfolio\/?page_id=2",
+            "action_code": 301,
+            "action_type": "url",
+            "action_data": {
+                "url": "\/about\/"
+            },
+            "match_type": "url",
+            "title": "",
+            "hits": 0,
+            "regex": false,
+            "group_id": 1,
+            "position": 4,
+            "last_access": "-",
+            "enabled": true
+        },
+        {
+            "id": 6,
+            "url": "\/portfolio\/?page_id=119",
+            "action_code": 301,
+            "action_type": "url",
+            "action_data": {
+                "url": "\/contact\/"
+            },
+            "match_type": "url",
+            "title": "",
+            "hits": 0,
+            "regex": false,
+            "group_id": 1,
+            "position": 5,
+            "last_access": "-",
+            "enabled": true
+        },
+        {
+            "id": 7,
+            "url": "\/portfolio\/",
+            "action_code": 301,
+            "action_type": "url",
+            "action_data": {
+                "url": "\/"
+            },
+            "match_type": "url",
+            "title": "",
+            "hits": 1,
+            "regex": false,
+            "group_id": 1,
+            "position": 6,
+            "last_access": "December 14, 2017",
+            "enabled": true
+        }
+    ]
+}
