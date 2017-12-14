@@ -47,7 +47,7 @@
 
         <figure class="story-detail-slide js-slider-slide"
                 data-id="<?php echo $mediacount; ?>">
-          <div class="story-detail-slide__image-wrap">
+          <div class="story-detail-slide__video-wrap">
             <?php echo wp_oembed_get($videoVimeo); ?>
           </div>
         </figure>

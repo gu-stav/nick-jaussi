@@ -1,7 +1,4 @@
 .story-detail-slide {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
   margin: 0 0 1.5rem 0;
   overflow: hidden;
   padding: 0;
@@ -9,6 +6,9 @@
   width: 100%;
 
   @include mq(tablet) {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
     height: calc(100vh - 2.4rem);
   }
 
@@ -63,8 +63,7 @@
     position: relative;
     width: 100%;
 
-    > img,
-    > iframe {
+    > img {
       height: auto;
       object-fit: contain;
       width: 100%;
@@ -78,8 +77,20 @@
         width: auto;
       }
     }
+  }
+
+  &__video-wrap {
+    height: 100%;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    position: relative;
+    width: 100%;
 
     > iframe {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
       width: 100%;
     }
   }
