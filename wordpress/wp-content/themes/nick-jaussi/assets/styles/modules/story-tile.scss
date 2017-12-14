@@ -1,5 +1,5 @@
 .story-tile {
-  background-color: rgb(240, 240, 240);
+  background-color: rgb(255, 255, 255);
   color: black;
   margin-bottom: 1rem;
   margin-left: 1rem;
@@ -12,7 +12,6 @@
   }
 
   @include mq(desktop) {
-    background-color: rgb(255, 255, 255);
     display: flex;
     flex: 0 0 auto;
   }
@@ -57,22 +56,18 @@
   }
 
   &__type {
+    border-bottom: 1px solid $brand-color;
     display: block;
     font-size: .85rem;
     font-weight: $font-weight-normal;
-    padding-bottom: .1rem;
-
-    @include mq(desktop) {
-      border-bottom: 1px solid $brand-color;
-      margin-bottom: .3rem;
-      padding-bottom: .3rem;
-    }
+    margin-bottom: .3rem;
+    padding-bottom: .3rem;
   }
 
   &__title {
     font-family: $font-family-roboto;
     font-size: 1.2rem;
-    font-weight: $font-weight-normal;
+    font-weight: $font-weight-bold;
     line-height: 1.2;
     margin: 0 .5rem .5rem .5rem;
     text-transform: lowercase;

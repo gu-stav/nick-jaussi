@@ -8,6 +8,11 @@
     width: 100px;
 
     @include mq(tablet) {
+      height: 70px;
+      width: 130px;
+    }
+
+    @include mq(desktop) {
       height: 80px;
       width: 140px;
     }

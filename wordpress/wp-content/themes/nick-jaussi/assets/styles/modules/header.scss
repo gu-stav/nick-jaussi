@@ -19,6 +19,10 @@
     padding-right: 2rem;
     padding-top: 2rem;
     text-align: right;
+    width: 25%;
+  }
+
+  @include mq(desktop) {
     width: 18%;
   }
 

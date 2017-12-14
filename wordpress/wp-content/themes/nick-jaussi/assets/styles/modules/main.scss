@@ -3,7 +3,13 @@
   width: 100%;
 
   @include mq(tablet) {
+    padding-left: 1rem;
     padding-right: 0;
+    width: 75%;
+  }
+
+  @include mq(desktop) {
+    padding-left: 0;
     width: 82%;
   }
 }
