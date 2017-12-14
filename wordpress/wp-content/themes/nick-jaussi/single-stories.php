@@ -6,11 +6,16 @@
       <?php
         while ( have_posts() ) : the_post();
           $subtitle = rwmb_meta('story_subtitle');
+          $title = get_the_title();
+          $intro = get_the_content();
           $type = $STORY_TYPES[rwmb_meta('story_type')];
           $images = rwmb_meta('story_images');
           $videos = rwmb_meta('story_videos');
+
+          if ($intro) :
       ?>
-        <div class="story-detail-slide story-detail-slide--intro story-detail-slide--active js-slider-slide">
+
+        <div class="story-detail-slide story-detail-slide--intro js-slider-slide">
           <div class="story-detail-slide__content">
             <h1 class="story-detail-slide__title">
               <?php if ($type) : ?>
@@ -20,7 +25,7 @@
                 </small>
               <?php endif; ?>
 
-              <?php the_title(); ?>
+              <?php echo $title; ?>
 
               <?php if ($subtitle) : ?>
                 <small class="story-detail-slide__sub-title">
@@ -30,10 +35,12 @@
             </h1>
 
             <div class="story-detail-slide__text-content">
-              <?php the_content(); ?>
+              <?php echo $intro; ?>
             </div>
           </div>
         </div>
+
+      <?php endif; ?>
 
         <?php
           foreach ($videos as $list) :

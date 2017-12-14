@@ -9,12 +9,19 @@ const init = () => {
 
   let lastScrolled = 0;
 
-  if (!slider || !canvas || !slides) {
+  if (!slider || !canvas || !slides || slides.length === 1) {
     return;
   }
 
-  const findActiveSlide = () =>
-    slides.find(_ => _.classList.contains(ACTIVE_CLASS));
+  const findActiveSlide = () => {
+    const active = slides.find(_ => _.classList.contains(ACTIVE_CLASS));
+
+    if (!active) {
+      return slides[0];
+    }
+
+    return active;
+  };
 
   const findSlideByTitle = (title) =>
     slides.find(_ => _.classList.dataset.title === title);
