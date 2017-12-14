@@ -13,4 +13,9 @@
   &__canvas {
     transition: transform 300ms cubic-bezier(.25, .76, .52, .89);
   }
+
+  .no-js & {
+    height: auto;
+    overflow: visible;
+  }
 }
