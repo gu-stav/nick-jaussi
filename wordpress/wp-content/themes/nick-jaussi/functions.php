@@ -87,8 +87,7 @@ function register_story_fields($meta_boxes) {
       array(
         'id' => 'story_video_vimeo',
         'type' => 'text',
-        'name' => 'Story Video (Vimeo)',
-        'add_button' => 'Add Video',
+        'name' => 'Video (Vimeo/ Youtube URL)',
       ),
     ),
   );
