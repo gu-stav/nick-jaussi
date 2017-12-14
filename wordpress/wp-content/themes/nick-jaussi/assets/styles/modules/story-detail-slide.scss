@@ -16,6 +16,11 @@
     height: auto;
   }
 
+  &--outro {
+    height: auto;
+    text-align: center;
+  }
+
   &__type {
     display: block;
     font-size: .85rem;
@@ -119,6 +124,7 @@
 
     @include mq(tablet) {
       max-width: 57rem;
+      width: auto;
     }
 
     &:not(:empty) {
@@ -128,5 +134,9 @@
         margin-top: .75rem;
       }
     }
+  }
+
+  a {
+    color: $brand-color;
   }
 }
