@@ -3,7 +3,7 @@ import domready from 'domready';
 import { init as initSlider, destroy as destroySlider } from './modules/slider';
 
 const createSlider = () => {
-  if (window.innerWidth > 800) {
+  if (window.innerWidth > 760) {
     initSlider();
   } else {
     destroySlider();
