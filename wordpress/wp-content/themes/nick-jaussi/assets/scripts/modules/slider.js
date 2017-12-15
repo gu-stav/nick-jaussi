@@ -47,10 +47,19 @@ const init = () => {
     return null;
   };
 
+  const isLastSlide = slide =>
+    slides.findIndex(_ => _ === slide) + 1 === slides.length;
+
   const scrollToSlide = (slide, options = {}) => {
-    const { offsetTop } = slide;
+    let { offsetTop } = slide;
     let origTransition;
     let value;
+
+    // make sure parts of the last image stay in the viewport
+    if (isLastSlide(slide)) {
+      const previous = slideBefore(slide);
+      offsetTop = offsetTop - (previous.offsetHeight / 1.5);
+    }
 
     if (offsetTop !== 0) {
       value = `translateY(${-offsetTop}px)`;
@@ -83,7 +92,7 @@ const init = () => {
   const onScroll = event => {
     const currentTime = new Date().getTime();
 
-    if (lastScrolled + 1500 > currentTime) {
+    if (lastScrolled + 1300 > currentTime) {
       return false;
     }
 
