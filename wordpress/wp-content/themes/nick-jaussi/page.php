@@ -10,9 +10,19 @@
         <?php the_title(); ?>
       </h1>
 
-      <div class="text__author-image">
+      <figure class="text__author-image">
+        <?php
+          $img_id = get_post_thumbnail_id();
+          $img_meta = wp_get_attachment_metadata($img_id);
+          $img_caption = $img_meta['image_meta']['caption']
+        ?>
+
         <?php the_post_thumbnail('portrait'); ?>
-      </div>
+
+        <?php if ($img_caption) : ?>
+          <figcaption><?php echo esc_html($img_caption); ?></figcaption>
+        <?php endif; ?>
+      </figure>
 
       <div class="text__content">
         <?php the_content(); ?>

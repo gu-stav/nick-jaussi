@@ -45,11 +45,48 @@
   }
 
   &__author-image {
+    margin: 0;
+
     @include mq(tablet) {
       float: right;
       margin-bottom: 1.5rem;
       margin-left: 1.5rem;
-      margin-right: -8rem;
+      max-width: 12rem;
+    }
+
+    @include mq(desktop) {
+      margin-right: -6rem;
+      max-width: 18rem;
+    }
+
+    @include mq(wide) {
+      margin-right: -10rem;
+      max-width: 20rem;
+    }
+
+    > img {
+      height: auto;
+      width: 100%;
+    }
+
+    > figcaption {
+      font-family: $font-family-roboto;
+      font-size: .8rem;
+      line-height: 1.25;
+      width: 100%;
+
+      @include mq(tablet) {
+        max-width: 57rem;
+        width: auto;
+      }
+
+      &:not(:empty) {
+        margin-top: .5rem;
+
+        @include mq(tablet) {
+          margin-top: .75rem;
+        }
+      }
     }
   }
 }
