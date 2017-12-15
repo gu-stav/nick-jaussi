@@ -18,8 +18,15 @@
   }
 
   &--outro {
+    font-family: $font-family-roboto;
+    font-size: .8rem;
     height: auto;
+    line-height: 1.25;
     text-align: center;
+
+    p {
+      margin-bottom: .5rem;
+    }
   }
 
   &__type {

@@ -82,7 +82,7 @@
 
       <div class="story-detail-slide story-detail-slide--outro js-slider-slide">
         <div class="story-detail-slide__content">
-          <p>This is the end, my friend!</p>
+          <p>This is the end, my friend ...</p>
           <a href="<?php echo home_url(); ?>">Show all stories</a>
         </div>
       </div>
