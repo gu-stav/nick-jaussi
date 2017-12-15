@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main class="js-background-map background-map">
+<main class="main js-background-map">
   <div class="text">
     <?php
       while ( have_posts() ) : the_post();
