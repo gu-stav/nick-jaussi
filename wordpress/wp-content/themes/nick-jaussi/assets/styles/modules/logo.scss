@@ -16,6 +16,11 @@
       height: 80px;
       width: 160px;
     }
+
+    @include mq(wide) {
+      height: 80px;
+      width: 180px;
+    }
   }
 
   &__image-name {

@@ -30,6 +30,10 @@
     color: currentColor;
     text-decoration: none;
 
+    @include mq(wide) {
+      font-size: 1.1rem;
+    }
+
     &:hover,
     &:focus {
       color: $brand-color;
@@ -57,12 +61,20 @@
     margin: 0;
     padding: 0;
 
+    @include mq(wide) {
+      margin-top: 1rem;
+    }
+
     > * {
       display: inline-block;
 
       @include mq(tablet) {
         display: block;
         margin-bottom: .75rem;
+      }
+
+      @include mq(wide) {
+        margin-bottom: .9rem;
       }
     }
 
