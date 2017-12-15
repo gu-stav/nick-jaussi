@@ -1,5 +1,5 @@
 .story-detail-slide {
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 2.5rem 0;
   overflow: hidden;
   padding: 0;
   position: relative;
@@ -10,6 +10,7 @@
     display: flex;
     flex-direction: column;
     height: calc(100vh - 2.4rem);
+    margin-bottom: 1.5rem;
   }
 
   &--intro {
@@ -139,7 +140,7 @@
     }
 
     &:not(:empty) {
-      margin-top: .5rem;
+      margin-top: .3rem;
 
       @include mq(tablet) {
         margin-top: .75rem;
