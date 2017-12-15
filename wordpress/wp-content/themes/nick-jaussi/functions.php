@@ -133,7 +133,7 @@ function theme_scripts() {
 }
 
 add_image_size('story-preview', 720, 9999);
-add_image_size('story-image', 1200, 9999);
+add_image_size('story-image', 1800, 9999);
 add_image_size('portrait', 400, 400);
 
 /* register custom post types */
