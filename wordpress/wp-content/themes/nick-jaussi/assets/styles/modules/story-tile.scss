@@ -57,21 +57,35 @@
   }
 
   &__type {
-    border-bottom: 1px solid $brand-color;
     display: block;
     font-size: .85rem;
     font-weight: $font-weight-normal;
-    margin-bottom: .3rem;
-    padding-bottom: .3rem;
+
+    @include mq(tablet) {
+      border-bottom: 1px solid $brand-color;
+      margin-bottom: .3rem;
+      padding-bottom: .3rem;
+    }
   }
 
   &__title {
+    background-color: white;
+    border-top: 2px solid $brand-color;
     font-family: $font-family-roboto;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: $font-weight-bold;
     line-height: 1.2;
-    margin: 0 .5rem .5rem .5rem;
+    margin: -2rem 1rem 0 1rem;
+    padding: .5rem;
     text-transform: lowercase;
+
+    @include mq(tablet) {
+      background-color: transparent;
+      border-top: 0;
+      font-size: 1.35rem;
+      margin: 0 .5rem .5rem .5rem;
+      padding: 0;
+    }
 
     @include mq(desktop) {
       left: 50%;
@@ -81,10 +95,6 @@
       top: 50%;
       transform: translate(-50%, -50%);
       transition: opacity 200ms ease;
-    }
-
-    @include mq(tablet) {
-      font-size: 1.6rem;
     }
   }
 }
