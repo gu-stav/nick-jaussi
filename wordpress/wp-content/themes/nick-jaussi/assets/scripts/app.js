@@ -2,7 +2,7 @@ import debounce from 'debounce';
 import domready from 'domready';
 import { init as initSlider, destroy as destroySlider } from './modules/slider';
 
-const createScreenAwareSlider = () => {
+const createSlider = () => {
   if (window.innerWidth > 800) {
     initSlider();
   } else {
@@ -11,10 +11,10 @@ const createScreenAwareSlider = () => {
 };
 
 domready(() => {
-  createScreenAwareSlider();
+  createSlider();
 
   window.addEventListener(
     'resize',
-    debounce(() => createScreenAwareSlider(), 100)
+    debounce(() => createSlider(), 100)
   );
 });
