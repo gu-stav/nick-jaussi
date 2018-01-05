@@ -8,9 +8,11 @@
       $stories = get_all_stories();
 
       while ( $stories->have_posts() ) : $stories->the_post();
+        $color = rwmb_meta('story_color');
     ?>
 
-      <div class="story-tile">
+      <div class="story-tile"
+           <?php if($color) { echo 'style="background-color: ' . $color . '"' } ?>>
         <a href="<?php the_permalink(); ?>">
           <?php
             $img_id = get_post_thumbnail_id();

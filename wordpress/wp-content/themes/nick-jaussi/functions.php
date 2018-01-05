@@ -69,6 +69,12 @@ function register_story_fields($meta_boxes) {
       ),
 
       array(
+        'id' => 'story_color',
+        'name' => 'Story Color',
+        'type' => 'color',
+      ),
+
+      array(
         'id' => 'story_on-frontpage',
         'name' => 'Show on frontpage',
         'type' => 'checkbox',
