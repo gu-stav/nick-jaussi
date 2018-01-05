@@ -1,5 +1,4 @@
 .story-tile {
-  background-color: rgb(255, 255, 255) !important;
   color: black;
   margin-bottom: 1rem;
   margin-left: 1rem;
@@ -7,12 +6,16 @@
   position: relative;
   width: calc(100% - 1rem);
 
+  // overwrite explicit background-color
+  @include mq($until: desktop) {
+    background-color: rgb(255, 255, 255) !important;
+  }
+
   @include mq(tablet) {
     width: calc(50% - 1rem);
   }
 
   @include mq(desktop) {
-    background-color: inherit !important;
     color: white;
     display: flex;
     flex: 0 0 auto;
