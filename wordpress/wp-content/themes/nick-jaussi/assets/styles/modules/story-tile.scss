@@ -25,15 +25,10 @@
     text-align: center;
     text-decoration: none;
     width: 100%;
-
-    @include mq(desktop) {
-      display: flex;
-    }
   }
 
   img {
     height: auto;
-    object-fit: cover;
     width: 100%;
 
     @include mq(desktop) {
@@ -46,13 +41,6 @@
     @include mq(desktop) {
       filter: grayscale(100%);
       opacity: .15;
-    }
-  }
-
-  & > a:hover > &__title,
-  & > a:focus > &__title {
-    @include mq(desktop) {
-      opacity: 1;
     }
   }
 
@@ -95,6 +83,13 @@
       top: 50%;
       transform: translate(-50%, -50%);
       transition: opacity 200ms ease;
+    }
+  }
+
+  & > a:hover > &__title,
+  & > a:focus > &__title {
+    @include mq(desktop) {
+      opacity: 1;
     }
   }
 }
