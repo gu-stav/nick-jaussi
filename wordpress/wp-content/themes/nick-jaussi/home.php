@@ -12,7 +12,7 @@
     ?>
 
       <div class="story-tile"
-           <?php if($color) { echo 'style="background-color: ' . $color . '"' } ?>>
+           <?php if($color) { echo 'style="background-color: ' . $color . '"'; } ?>>
         <a href="<?php the_permalink(); ?>">
           <?php
             $img_id = get_post_thumbnail_id();
