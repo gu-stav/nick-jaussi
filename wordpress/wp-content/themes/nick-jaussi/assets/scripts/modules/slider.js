@@ -2,9 +2,7 @@ const ACTIVE_CLASS = 'story-detail-slide--active';
 
 const slider = document.getElementsByClassName('js-slider')[0];
 const canvas = slider && slider.getElementsByClassName('js-slider-canvas')[0];
-const slides = slider && [
-  ...slider.getElementsByClassName('js-slider-slide')
-];
+const slides = slider && [...slider.getElementsByClassName('js-slider-slide')];
 const locationHash = window.location.hash;
 
 let lastScrolled = 0;
@@ -19,8 +17,7 @@ const findActiveSlide = () => {
   return active;
 };
 
-const findSlideById = (id) =>
-  slides.find(_ => _.dataset && _.dataset.id === id);
+const findSlideById = id => slides.find(_ => _.dataset && _.dataset.id === id);
 
 const slideAfter = nextSlide => {
   const index = slides.findIndex(_ => _ === nextSlide);
@@ -53,13 +50,13 @@ const scrollToSlide = (slide, options = {}) => {
   // make sure parts of the last image stay in the viewport
   if (isLastSlide(slide)) {
     const previous = slideBefore(slide);
-    offsetTop = offsetTop - (previous.offsetHeight / 1.5);
+    offsetTop -= previous.offsetHeight / 1.5;
   }
 
   if (offsetTop !== 0) {
     value = `translateY(${-offsetTop}px)`;
   } else {
-     value = 'none';
+    value = 'none';
   }
 
   if (options.animate === false) {
@@ -78,9 +75,15 @@ const scrollToSlide = (slide, options = {}) => {
   slides.forEach(_ => _.classList.toggle(ACTIVE_CLASS, _ === slide));
 
   if (slide.dataset && slide.dataset.id) {
-    window.location.hash = slide.dataset.id;
-  } else {
-    window.location.hash = '';
+    if ('history' in window) {
+      window.history.pushState(
+        { id: slide.dataset.id },
+        '',
+        `#${slide.dataset.id}`
+      );
+    }
+  } else if ('history' in window) {
+    window.history.pushState({ id: null }, '', '#');
   }
 };
 
@@ -108,7 +111,7 @@ const onKeyDown = event => {
   const activeSlide = findActiveSlide();
   let nextSlide;
 
-  switch(keyCode) {
+  switch (keyCode) {
     case 40:
     case 39:
       nextSlide = slideAfter(activeSlide);
@@ -134,6 +137,16 @@ const init = () => {
   document.addEventListener('wheel', onScroll);
   document.addEventListener('mousewheel', onScroll);
   document.addEventListener('keydown', onKeyDown);
+
+  if ('history' in window) {
+    window.onpopstate = event => {
+      if (event.state) {
+        const { id } = event.state;
+
+        scrollToSlide(findSlideById(id || 0));
+      }
+    };
+  }
 
   if (locationHash) {
     const start = findSlideById(locationHash.substr(1));

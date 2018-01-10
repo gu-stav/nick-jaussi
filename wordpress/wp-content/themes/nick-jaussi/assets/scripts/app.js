@@ -13,8 +13,5 @@ const createSlider = () => {
 domready(() => {
   createSlider();
 
-  window.addEventListener(
-    'resize',
-    debounce(() => createSlider(), 100)
-  );
+  window.addEventListener('resize', debounce(() => createSlider(), 100));
 });
