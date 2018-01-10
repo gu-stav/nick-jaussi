@@ -76,7 +76,7 @@ const scrollToSlide = (slide, options = {}) => {
 
   if (slide.dataset && slide.dataset.id) {
     if ('history' in window) {
-      window.history.pushState(
+      window.history.replaceState(
         { id: slide.dataset.id },
         '',
         `#${slide.dataset.id}`
