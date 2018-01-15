@@ -1,26 +1,22 @@
-# Nick Jaussi - Wordpress Theme
+# Nick Jaussi WP Theme
+
+## Installation
+
+You may want to use `--prefix wordpress/wp-content/themes/nick-jaussi` with any npm command, so you don't have to switch into the theme directory.
+
+`npm install`
+
 
 ## Development
 
-### Watch for changes
+Watch for changes `npm run watch` or compile assets once running `npm run compile`
 
-`npm run watch`
+### Lint
 
-### Compile assets
+Lint JS: `npm run lint-js` (fix `npm run lint-js -- --fix`)
+Lint CSS: `npm run lint-css`
 
-`npm run compile`
-
-### Lint assets
-
-`npm run lint-js`
-
-`npm run lint-css`
-
-Both commands accept the `--fix` option, to automatically fix the code. Example:
-`npm run lint-js -- --fix`.
 
 ## Production
 
-### Compile assets
-
-`npm run compile-production`
+Compile assets running `npm run compile-production`
