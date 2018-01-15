@@ -74,6 +74,7 @@
     > img {
       height: auto;
       object-fit: contain;
+      pointer-events: none;
       width: 100%;
 
       @include mq(tablet) {
