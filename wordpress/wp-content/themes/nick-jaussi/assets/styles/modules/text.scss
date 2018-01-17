@@ -87,6 +87,16 @@
           margin-top: .75rem;
         }
       }
+
+      a {
+        color: $brand-color;
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+          text-decoration: underline;
+        }
+      }
     }
   }
 }
