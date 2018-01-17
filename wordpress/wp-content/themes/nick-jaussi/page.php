@@ -20,7 +20,7 @@
         <?php the_post_thumbnail('portrait'); ?>
 
         <?php if ($img_caption) : ?>
-          <figcaption><?php echo esc_html($img_caption); ?></figcaption>
+          <figcaption><?php echo $img_caption; ?></figcaption>
         <?php endif; ?>
       </figure>
 
