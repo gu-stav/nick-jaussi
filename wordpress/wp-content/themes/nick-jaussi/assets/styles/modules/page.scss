@@ -5,6 +5,8 @@
   min-height: 100vh;
   position: relative;
   $focus-size: .35rem;
+  $corner-spacing: .25rem;
+  $size: 2rem;
 
   @include mq(tablet) {
     flex-direction: row;
@@ -14,9 +16,9 @@
   &:before {
     content: '';
     display: none;
-    height: 1.7rem;
+    height: $size;
     position: absolute;
-    width: 1.7rem;
+    width: $size;
 
     @include mq(tablet) {
       display: block;
@@ -26,14 +28,14 @@
   &:after {
     border-bottom: $focus-size solid $brand-color;
     border-left: $focus-size solid $brand-color;
-    bottom: 0;
-    left: 0;
+    bottom: $corner-spacing;
+    left: $corner-spacing;
   }
 
   &:before {
     border-right: $focus-size solid $brand-color;
     border-top: $focus-size solid $brand-color;
-    right: 0;
-    top: 0;
+    right: $corner-spacing;
+    top: $corner-spacing;
   }
 }
