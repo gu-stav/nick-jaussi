@@ -42,7 +42,9 @@
               </small>
             <?php endif; ?>
 
-            <?php echo get_the_title(); ?>
+            <span class="story-tile__title-text">
+              <?php echo get_the_title(); ?>
+            </span>
           </h2>
         </a>
       </div>
